@@ -4,6 +4,7 @@ etckeeper (0.51) UNRELEASED; urgency=low
   * Improve rpm version change detection.
   * Move etckeeper out of sbin, to avoid needing to work around broken
     root PATH settings in eg, crontab. Closes: #602438
+  * Added Polish translation of debconf templates. Closes: #607563
 
  -- Joey Hess <joeyh@debian.org>  Sat, 30 Oct 2010 23:53:51 -0400
 
