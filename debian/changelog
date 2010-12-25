@@ -1,4 +1,4 @@
-etckeeper (0.51) UNRELEASED; urgency=low
+etckeeper (0.51) unstable; urgency=low
 
   * Updated Vietnamese translation of debconf templates. Closes: #601921
   * Improve rpm version change detection.
@@ -6,7 +6,7 @@ etckeeper (0.51) UNRELEASED; urgency=low
     root PATH settings in eg, crontab. Closes: #602438
   * Added Polish translation of debconf templates. Closes: #607563
 
- -- Joey Hess <joeyh@debian.org>  Sat, 30 Oct 2010 23:53:51 -0400
+ -- Joey Hess <joeyh@debian.org>  Sat, 25 Dec 2010 14:39:57 -0400
 
 etckeeper (0.50) unstable; urgency=low
 
