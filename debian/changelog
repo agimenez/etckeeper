@@ -1,3 +1,10 @@
+etckeeper (0.52) UNRELEASED; urgency=low
+
+  * Rewrote 50git-rm to avoid using git ls-files, and thus avoid encoding
+    problems with filenames.
+
+ -- Joey Hess <joeyh@debian.org>  Thu, 13 Jan 2011 14:07:21 -0400
+
 etckeeper (0.51) unstable; urgency=low
 
   * Updated Vietnamese translation of debconf templates. Closes: #601921
