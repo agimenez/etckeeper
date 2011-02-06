@@ -1,9 +1,9 @@
-etckeeper (0.52) UNRELEASED; urgency=low
+etckeeper (0.52) unstable; urgency=low
 
   * Rewrote 50git-rm to avoid using git ls-files, and thus avoid encoding
     problems with filenames.
 
- -- Joey Hess <joeyh@debian.org>  Thu, 13 Jan 2011 14:07:21 -0400
+ -- Joey Hess <joeyh@debian.org>  Sun, 06 Feb 2011 00:00:55 -0400
 
 etckeeper (0.51) unstable; urgency=low
 
