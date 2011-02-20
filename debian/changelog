@@ -1,6 +1,12 @@
 etckeeper (0.53) UNRELEASED; urgency=low
 
+  [ Joey Hess ]
   * Install bzr hook lazily, clean up some compatibility code. (Jelmer Vernooij)
+
+  [ Josh Triplett ]
+  * Only set environment variables for commit authorship (EMAIL,
+    GIT_AUTHOR_NAME, GIT_AUTHOR_EMAIL, GIT_COMMITTER_EMAIL) if they don't
+    already exist.
 
  -- Joey Hess <joeyh@debian.org>  Sat, 19 Feb 2011 20:02:46 -0400
 
