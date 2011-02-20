@@ -1,3 +1,9 @@
+etckeeper (0.53) UNRELEASED; urgency=low
+
+  * Install bzr hook lazily, clean up some compatibility code. (Jelmer Vernooij)
+
+ -- Joey Hess <joeyh@debian.org>  Sat, 19 Feb 2011 20:02:46 -0400
+
 etckeeper (0.52) unstable; urgency=low
 
   * Rewrote 50git-rm to avoid using git ls-files, and thus avoid encoding
