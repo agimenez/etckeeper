@@ -135,6 +135,8 @@ writefile () {
 	ignore "sv/*/supervise/*"
 	ignore "sv/*/log/supervise/*"
 	ignore "*.elc"
+	ignore "*.pyc"
+	ignore "*.pyo"
 	nl
 	
 	comment "editor temp files"

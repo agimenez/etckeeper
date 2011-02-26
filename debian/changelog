@@ -8,6 +8,9 @@ etckeeper (0.53) UNRELEASED; urgency=low
     GIT_AUTHOR_NAME, GIT_AUTHOR_EMAIL, GIT_COMMITTER_EMAIL) if they don't
     already exist.
 
+  [ Joey Hess ]
+  * Add .pyc and .pyo files to ignore.
+
  -- Joey Hess <joeyh@debian.org>  Sat, 19 Feb 2011 20:02:46 -0400
 
 etckeeper (0.52) unstable; urgency=low
