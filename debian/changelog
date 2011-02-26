@@ -10,6 +10,7 @@ etckeeper (0.53) UNRELEASED; urgency=low
 
   [ Joey Hess ]
   * Add .pyc and .pyo files to ignore.
+  * Add lvm/backup and lvm/cache to ignore. Closes: #462355
 
  -- Joey Hess <joeyh@debian.org>  Sat, 19 Feb 2011 20:02:46 -0400
 
