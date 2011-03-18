@@ -5,9 +5,12 @@ exclude_internal () {
 	egrep -v '(^|/)(.git|.hg|.bzr|_darcs)/'
 }
 
-if [ "$VCS" = hg ] || [ "$VCS" = bzr ] || [ "$VCS" = darcs ]; then
+if [ "$VCS" = bzr ] || [ "$VCS" = darcs ]; then
 	special=$(find . -not -type d -not -type f -not -type l | exclude_internal) || true
 	hardlinks=$(find . -type f -not -links 1 | exclude_internal ) || true
+elif [ "$VCS" = hg ]; then
+	special=$(find . -not -type d -not -type f -not -type l | exclude_internal) || true
+	hardlinks=$(find . -type f -not -links 1 -exec hg status {} \; | exclude_internal ) || true
 elif [ "$VCS" = git ]; then
 	special=$(find . -not -type d -not -type f -not -type l -exec git ls-files --exclude-standard --cached --others {} \; | exclude_internal) || true
 	hardlinks=$(find . -type f -not -links 1 -exec git ls-files --exclude-standard --cached --others {} \; | exclude_internal) || true

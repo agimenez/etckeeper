@@ -11,6 +11,9 @@ etckeeper (0.53) UNRELEASED; urgency=low
   [ Joey Hess ]
   * Add .pyc and .pyo files to ignore.
   * Add lvm/backup and lvm/cache to ignore. Closes: #462355
+  * Avoid warning about special or hard linked files that are ignored
+    by hg. Thanks Sjoerd Mullender for patch. 
+    Closes: https://bugzilla.redhat.com/show_bug.cgi?id=688991
 
  -- Joey Hess <joeyh@debian.org>  Sat, 19 Feb 2011 20:02:46 -0400
 
