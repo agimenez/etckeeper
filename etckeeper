@@ -51,6 +51,10 @@ if [ ! -z "$AVOID_COMMIT_BEFORE_INSTALL" ]; then
 	export AVOID_COMMIT_BEFORE_INSTALL
 fi
 
+if [ ! -z "$PUSH_REMOTE" ]; then
+	export PUSH_REMOTE
+fi
+
 if [ -z "$1" ]; then
 	usage
 fi
