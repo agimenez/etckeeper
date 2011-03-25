@@ -139,6 +139,7 @@ writefile () {
 	ignore "*.elc"
 	ignore "*.pyc"
 	ignore "*.pyo"
+	ignore "init.d/.depend.*"
 	nl
 	
 	comment "editor temp files"
