@@ -2,6 +2,10 @@ etckeeper (0.54) UNRELEASED; urgency=low
 
   * Ignore inssev's FHS violating /etc/init.d/.depend.* files.
     Closes: #619407 See #619409
+  * Use hg pre-commit hook, rather than its precommit hook,
+    as the latter is run after the files staged for commit are
+    determined and so .etckeeper cannot be staged as part of the current
+    commit. Closes: #621827
 
  -- Joey Hess <joeyh@debian.org>  Fri, 25 Mar 2011 15:14:32 -0400
 
