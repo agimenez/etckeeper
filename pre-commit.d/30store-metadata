@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 # Filters out UNKNOWN users and groups, prints a warning on stderr.

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 # Note that metastore doesn't check that the .metastore file only changes

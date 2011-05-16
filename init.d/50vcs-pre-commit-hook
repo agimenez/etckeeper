@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 case "$VCS" in
@@ -9,7 +9,7 @@ case "$VCS" in
 			fi
 		else
 			cat >.git/hooks/pre-commit <<EOF
-#!/bin/sh
+#!/bin/bash
 # pre-commit hook for etckeeper, to store metadata and do sanity checks
 set -e
 etckeeper pre-commit -d `pwd`

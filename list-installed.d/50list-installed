@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Output to stdout a *sorted* list of all currently installed 
 # (or removed but still with config-files) packages, in the
 # format "package version\n" (or something similar).
