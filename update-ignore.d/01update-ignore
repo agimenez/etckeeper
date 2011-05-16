@@ -164,7 +164,7 @@ if [ -e "$file" ]; then
 	elif [ -n "`type -p mktemp`" ]; then
 		tempfile="mktemp"
 	else
-		echo "etckeeper warning: can't find tempfile or mktemp" >&2
+		echo "etckeeper warning: can't gfind tempfile or mktemp" >&2
 	fi
 	file=$($tempfile)
 	(

@@ -35,7 +35,7 @@ if [ "$VCS" = darcs ];then
 		done
 
 		# Warn about symbolic links that shouldn't exist
-		if links=$( find $NOVCS -type l -print | filter_ignore | grep -vFf "$linksindex" ); then
+		if links=$( gfind $NOVCS -type l -print | filter_ignore | grep -vFf "$linksindex" ); then
 			printf "%s\n%s\n" \
 				"The following symbolic links should not exist:" \
 				"$links" >&2

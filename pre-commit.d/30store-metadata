@@ -45,9 +45,9 @@ generate_metadata() {
 	# if the file in its last argument exists.
 
 	# We maintain the permissions on the directory containing VCS data
-	# but we want find to ignore the VCS files themselves.
+	# but we want gfind to ignore the VCS files themselves.
 	# 
-	# (Note that when using this, the find expression must end with 
+	# (Note that when using this, the gfind expression must end with 
 	# -print or -exec, else the excluded directories will actually be
 	# printed!)
 	NOVCS='. -wholename ./.git -prune -o -wholename ./.bzr -prune -o -wholename ./.hg -prune -o -wholename ./_darcs -prune -o'
@@ -59,39 +59,39 @@ generate_metadata() {
 	if [ "$VCS" = git ] || [ "$VCS" = hg ]; then
 		# These version control systems do not track directories,
 		# so empty directories must be stored specially.
-		find $NOVCS -type d -empty -print |
+		gfind $NOVCS -type d -empty -print |
 			sort | sed -e "s/^/mkdir -p '/" -e "s/\$/'/"
 	fi
 
 	if [ "$VCS" = darcs ]; then
 		# This version control system does not track symlinks,
 		# so they must be stored specially.
-		find $NOVCS -type l -print | sort | filter_ignore | while read link; do
+		gfind $NOVCS -type l -print | sort | filter_ignore | while read link; do
 			dest=$( readlink "$link" )
 			printf "ln -sf '%s' '%s'\n" "$dest" "$link"
 		done
 	fi
 
 	# Find all files and directories that don't have the current user as the owner
-	find $NOVCS \! -user "$(id -u)" -exec stat --format="maybe chown %U '{}'" {} \; \
+	gfind $NOVCS \! -user "$(id -u)" -exec stat --format="maybe chown %U '{}'" {} \; \
 		| sort | filter_unknown 'maybe chown' owner
 	# Find all files and directories that don't have root as the group
-	find $NOVCS \! -group $(id -g) -exec stat --format="maybe chgrp %G '{}'" {} \; \
+	gfind $NOVCS \! -group $(id -g) -exec stat --format="maybe chgrp %G '{}'" {} \; \
 		| sort | filter_unknown 'maybe chgrp' group
 
 	# Find all directories that aren't 0755
-	find $NOVCS -type d \! -perm 0755 \
+	gfind $NOVCS -type d \! -perm 0755 \
 		-exec stat --format="maybe chmod %a '{}'" {} \; | sort
 
 	if [ "$VCS" = darcs ]; then
 		# Find all files that aren't 0644 (darcs doesn't maintain
 		# the executable bit).
-		find $NOVCS -type f \! -perm 0644 \
+		gfind $NOVCS -type f \! -perm 0644 \
 			-exec stat --format="maybe chmod %a '{}'" {} \; | sort
 	else
 		# Find all files that aren't 0644 or 0755 (we can assume the VCS will
 		# maintain the executable bit).
-		find $NOVCS -type f \! -perm 0644 \! -perm 0755 \
+		gfind $NOVCS -type f \! -perm 0644 \! -perm 0755 \
 			-exec stat --format="maybe chmod %a '{}'" {} \; | sort
 	fi
 
