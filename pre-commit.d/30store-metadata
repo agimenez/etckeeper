@@ -73,26 +73,24 @@ generate_metadata() {
 	fi
 
 	# Find all files and directories that don't have the current user as the owner
-	gfind $NOVCS \! -user "$(/usr/xpg4/bin/id -un)" -exec stat --format="maybe chown %U '{}'" {} \; \
+	gfind $NOVCS \! -user "$(/usr/xpg4/bin/id -un)" -printf "maybe chown %u %p\n" \
 		| sort | filter_unknown 'maybe chown' owner
 	# Find all files and directories that don't have root as the group
-	gfind $NOVCS \! -group $(/usr/xpg4/bin/id -gn) -exec stat --format="maybe chgrp %G '{}'" {} \; \
+	gfind $NOVCS \! -group $(/usr/xpg4/bin/id -gn) -printf "maybe chgrp %g %p\n" \
 		| sort | filter_unknown 'maybe chgrp' group
 
 	# Find all directories that aren't 0755
-	gfind $NOVCS -type d \! -perm 0755 \
-		-exec stat --format="maybe chmod %a '{}'" {} \; | sort
+	gfind $NOVCS -type d \! -perm 0755 -printf "maybe chmod %p 0%m\n" | sort
 
 	if [ "$VCS" = darcs ]; then
 		# Find all files that aren't 0644 (darcs doesn't maintain
 		# the executable bit).
-		gfind $NOVCS -type f \! -perm 0644 \
-			-exec stat --format="maybe chmod %a '{}'" {} \; | sort
+		gfind $NOVCS -type f \! -perm 0644 -printf "maybe chmod %0m %p\n" | sort
 	else
 		# Find all files that aren't 0644 or 0755 (we can assume the VCS will
 		# maintain the executable bit).
 		gfind $NOVCS -type f \! -perm 0644 \! -perm 0755 \
-			-exec stat --format="maybe chmod %a '{}'" {} \; | sort
+			-printf "maybe chmod 0%m %p\n" | sort
 	fi
 
 	# We don't handle xattrs.
