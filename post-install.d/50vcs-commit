@@ -11,7 +11,7 @@ if etckeeper unclean; then
 			echo "$message"
 			echo
 			echo "Package changes:"
-			etckeeper list-installed | diff -U0 $pl.pre-install - | tail -n+4 | egrep '^[-+]' || true
+			etckeeper list-installed | diff -U0 $pl.pre-install - | tail -n+4 | eggrep '^[-+]' || true
 		) | etckeeper commit --stdin
 	else
 		etckeeper commit "$(printf "$message")"

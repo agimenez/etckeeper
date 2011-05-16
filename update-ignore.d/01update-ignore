@@ -154,7 +154,7 @@ writefile () {
 }
 
 if [ -e "$file" ]; then
-	if ! grep -q "$managed_by_etckeeper" "$file"; then
+	if ! ggrep -q "$managed_by_etckeeper" "$file"; then
 		echo "etckeeper: "$file" does not contain \"$managed_by_etckeeper\" comment; not updating"
 		exit 1
 	fi
@@ -170,7 +170,7 @@ if [ -e "$file" ]; then
 	(
 		skipping=
 		while read line; do
-			if echo "$line" | grep -q "$managed_by_etckeeper"; then
+			if echo "$line" | ggrep -q "$managed_by_etckeeper"; then
 				if [ ! "$skipping" ]; then
 					skipping=1
 				else

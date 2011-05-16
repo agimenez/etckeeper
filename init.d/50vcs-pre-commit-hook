@@ -4,7 +4,7 @@ set -e
 case "$VCS" in
 	git)
 		if [ -x .git/hooks/pre-commit ]; then
-			if ! grep -q "etckeeper pre-commit" .git/hooks/pre-commit; then
+			if ! ggrep -q "etckeeper pre-commit" .git/hooks/pre-commit; then
 				echo "etckeeper warning: .git/hooks/pre-commit needs to be manually modified to run: etckeeper pre-commit -d `pwd`" >&2
 			fi
 		else
@@ -18,8 +18,8 @@ EOF
 		fi
 	;;
 	hg)
-		if [ -e .hg/hgrc ] && grep "^\[hooks\]" .hg/hgrc; then
-			if ! grep "^pre-commit" .hg/hgrc | grep -q "etckeeper pre-commit"; then
+		if [ -e .hg/hgrc ] && ggrep "^\[hooks\]" .hg/hgrc; then
+			if ! ggrep "^pre-commit" .hg/hgrc | ggrep -q "etckeeper pre-commit"; then
 				echo "etckeeper warning: [hooks] section in .hg/hgrc needs to be manually modified to contain: pre-commit = etckeeper pre-commit -d `pwd`" >&2
 			fi
 		else
@@ -33,8 +33,8 @@ EOF
 	;;
 	darcs)
 		if [ -e _darcs/prefs/defaults ]; then
-			if ! ( grep -q "record prehook etckeeper pre-commit" _darcs/prefs/defaults &&
-				grep -q "whatsnew prehook etckeeper pre-commit" _darcs/prefs/defaults ); then
+			if ! ( ggrep -q "record prehook etckeeper pre-commit" _darcs/prefs/defaults &&
+				ggrep -q "whatsnew prehook etckeeper pre-commit" _darcs/prefs/defaults ); then
 				echo "etckeeper warning: _darcs/prefs/defaults needs to be manually modified to run: etckeeper pre-commit -d `pwd`" >&2
 			fi
 		else
