@@ -73,10 +73,10 @@ generate_metadata() {
 	fi
 
 	# Find all files and directories that don't have the current user as the owner
-	gfind $NOVCS \! -user "$(id -u)" -exec stat --format="maybe chown %U '{}'" {} \; \
+	gfind $NOVCS \! -user "$(/usr/xpg4/bin/id -un)" -exec stat --format="maybe chown %U '{}'" {} \; \
 		| sort | filter_unknown 'maybe chown' owner
 	# Find all files and directories that don't have root as the group
-	gfind $NOVCS \! -group $(id -g) -exec stat --format="maybe chgrp %G '{}'" {} \; \
+	gfind $NOVCS \! -group $(/usr/xpg4/bin/id -gn) -exec stat --format="maybe chgrp %G '{}'" {} \; \
 		| sort | filter_unknown 'maybe chgrp' group
 
 	# Find all directories that aren't 0755
