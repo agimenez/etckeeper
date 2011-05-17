@@ -3,7 +3,7 @@
 CONFFILE=etckeeper.conf
 include $(CONFFILE)
 
-DESTDIR?=/var/tmp/etckeeper_root
+DESTDIR?=
 prefix=/usr
 bindir=${prefix}/bin
 etcdir=/etc
