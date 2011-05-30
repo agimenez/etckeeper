@@ -1,4 +1,4 @@
-etckeeper (0.54) UNRELEASED; urgency=low
+etckeeper (0.54) unstable; urgency=low
 
   * Ignore inssev's FHS violating /etc/init.d/.depend.* files.
     Closes: #619407 See #619409
@@ -7,7 +7,7 @@ etckeeper (0.54) UNRELEASED; urgency=low
     determined and so .etckeeper cannot be staged as part of the current
     commit. Closes: #621827
 
- -- Joey Hess <joeyh@debian.org>  Fri, 25 Mar 2011 15:14:32 -0400
+ -- Joey Hess <joeyh@debian.org>  Mon, 30 May 2011 18:11:40 -0400
 
 etckeeper (0.53) unstable; urgency=low
 
