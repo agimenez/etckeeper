@@ -3,6 +3,8 @@ etckeeper (0.55) UNRELEASED; urgency=low
   * Fix error propigation to yum, which makes AVOID_COMMIT_BEFORE_INSTALL work.
     Closes: https://bugzilla.redhat.com/show_bug.cgi?id=709487
     Thanks, Thomas Moschny
+  * Avoid being noisy in post-install after automatic yum updates.
+    (Tuomo Soini)
 
  -- Joey Hess <joeyh@debian.org>  Tue, 31 May 2011 17:34:54 -0400
 
