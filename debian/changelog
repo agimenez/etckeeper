@@ -5,6 +5,7 @@ etckeeper (0.55) UNRELEASED; urgency=low
     Thanks, Thomas Moschny
   * Avoid being noisy in post-install after automatic yum updates.
     (Tuomo Soini)
+  * Ignore FHS violating prelink.cache and openvpn-status.log.
 
  -- Joey Hess <joeyh@debian.org>  Tue, 31 May 2011 17:34:54 -0400
 

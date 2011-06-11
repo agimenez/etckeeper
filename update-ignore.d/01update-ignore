@@ -118,6 +118,7 @@ writefile () {
 	comment "some other files in /etc that typically do not need to be tracked"
 	ignore nologin
 	ignore ld.so.cache
+	ignore prelink.cache
 	ignore mtab
 	ignore mtab.fuselock
 	ignore .pwd.lock
@@ -140,6 +141,7 @@ writefile () {
 	ignore "*.pyc"
 	ignore "*.pyo"
 	ignore "init.d/.depend.*"
+	ignore "openvpn/openvpn-status.log"
 	nl
 	
 	comment "editor temp files"
