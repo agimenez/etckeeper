@@ -122,6 +122,7 @@ writefile () {
 	ignore mtab
 	ignore mtab.fuselock
 	ignore .pwd.lock
+	ignore "*.LOCK"
 	ignore network/run
 	ignore adjtime
 	ignore lvm/cache
