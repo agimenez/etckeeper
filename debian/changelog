@@ -7,6 +7,8 @@ etckeeper (0.55) UNRELEASED; urgency=low
     (Tuomo Soini)
   * Ignore FHS violating prelink.cache and openvpn-status.log.
   * Ignore *.LOCK files, as used by selinux policies.
+  * Add AVOID_SPECIAL_FILE_WARNING to config file, and set it in cron
+    job to avoid daily noise. (gulikoza)
 
  -- Joey Hess <joeyh@debian.org>  Tue, 31 May 2011 17:34:54 -0400
 

@@ -50,6 +50,9 @@ fi
 if [ ! -z "$AVOID_COMMIT_BEFORE_INSTALL" ]; then
 	export AVOID_COMMIT_BEFORE_INSTALL
 fi
+if [ ! -z "$AVOID_SPECIAL_FILE_WARNING" ]; then
+	export AVOID_SPECIAL_FILE_WARNING
+fi
 
 if [ -z "$1" ]; then
 	usage
