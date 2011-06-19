@@ -1,4 +1,4 @@
-etckeeper (0.55) UNRELEASED; urgency=low
+etckeeper (0.55) unstable; urgency=low
 
   * Fix error propigation to yum, which makes AVOID_COMMIT_BEFORE_INSTALL work.
     Closes: https://bugzilla.redhat.com/show_bug.cgi?id=709487
@@ -10,7 +10,7 @@ etckeeper (0.55) UNRELEASED; urgency=low
   * Add AVOID_SPECIAL_FILE_WARNING to config file, and set it in cron
     job to avoid daily noise. (gulikoza)
 
- -- Joey Hess <joeyh@debian.org>  Tue, 31 May 2011 17:34:54 -0400
+ -- Joey Hess <joeyh@debian.org>  Sun, 19 Jun 2011 15:21:20 -0400
 
 etckeeper (0.54) unstable; urgency=low
 
