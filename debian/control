@@ -1,7 +1,7 @@
 Source: etckeeper
 Section: admin
 Priority: optional
-Build-Depends: debhelper (>= 7), dpkg-dev (>= 1.9.0), bzr (>= 1.5~), python-central
+Build-Depends: debhelper (>= 7), dpkg-dev (>= 1.9.0), bzr (>= 1.5~), python
 Maintainer: Joey Hess <joeyh@debian.org>
 Standards-Version: 3.9.2
 XS-Python-Version: all
@@ -15,7 +15,6 @@ Depends: git-core (>= 1:1.5.4) | git (>= 1:1.7) | mercurial | bzr (>= 1.5~) | da
 Recommends: cron
 Suggests: sudo (>= 1.7.4p4)
 Conflicts: bzr (<< 1.5~)
-XB-Python-Version: ${python:Versions}
 Description: store /etc in git, mercurial, bzr or darcs
  The etckeeper program is a tool to let /etc be stored in a git, mercurial,
  bzr or darcs repository. It hooks into APT to automatically commit changes
