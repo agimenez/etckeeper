@@ -36,6 +36,12 @@ filter_ignore() {
 	fi
 }
 
+statf() {
+	while read statfile; do
+		echo "$(stat --format="$1" "$statfile") '$statfile'"
+	done
+}
+
 generate_metadata() {
 	# This function generates the script commands to fix any files
 	# that aren't owner=root, group=root, or mode=0644 or 0755.
@@ -71,28 +77,23 @@ generate_metadata() {
 			printf "ln -sf '%s' '%s'\n" "$dest" "$link"
 		done
 	fi
-
+       	
 	# Find all files and directories that don't have the current user as the owner
-	find $NOVCS \! -user "$(id -u)" -exec stat --format="maybe chown %U '{}'" {} \; \
-		| sort | filter_unknown 'maybe chown' owner
+	find $NOVCS \! -user "$(id -u)" -print | statf "maybe chown %U" | sort | filter_unknown 'maybe chown' owner
 	# Find all files and directories that don't have root as the group
-	find $NOVCS \! -group $(id -g) -exec stat --format="maybe chgrp %G '{}'" {} \; \
-		| sort | filter_unknown 'maybe chgrp' group
+	find $NOVCS \! -group $(id -g) -print | statf "maybe chgrp %G" | sort | filter_unknown 'maybe chgrp' group
 
 	# Find all directories that aren't 0755
-	find $NOVCS -type d \! -perm 0755 \
-		-exec stat --format="maybe chmod %a '{}'" {} \; | sort
+	find $NOVCS -type d \! -perm 0755 -print | statf "maybe chmod %a" | sort
 
 	if [ "$VCS" = darcs ]; then
 		# Find all files that aren't 0644 (darcs doesn't maintain
 		# the executable bit).
-		find $NOVCS -type f \! -perm 0644 \
-			-exec stat --format="maybe chmod %a '{}'" {} \; | sort
+		find $NOVCS -type f \! -perm 0644 -print | statf "maybe chmod %a" | sort
 	else
 		# Find all files that aren't 0644 or 0755 (we can assume the VCS will
 		# maintain the executable bit).
-		find $NOVCS -type f \! -perm 0644 \! -perm 0755 \
-			-exec stat --format="maybe chmod %a '{}'" {} \; | sort
+		find $NOVCS -type f \! -perm 0644 \! -perm 0755 -print | statf "maybe chmod %a" | sort
 	fi
 
 	# We don't handle xattrs.
