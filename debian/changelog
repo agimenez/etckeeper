@@ -1,9 +1,9 @@
-etckeeper (0.56) UNRELEASED; urgency=low
+etckeeper (0.56) unstable; urgency=low
 
   * Converted to use dh_python2. Closes: #616800 
   * Handle files with % in their names.
 
- -- Joey Hess <joeyh@debian.org>  Tue, 28 Jun 2011 13:43:05 -0400
+ -- Joey Hess <joeyh@debian.org>  Tue, 12 Jul 2011 14:38:09 -0400
 
 etckeeper (0.55) unstable; urgency=low
 
