@@ -56,7 +56,7 @@ generate_metadata() {
 	# (Note that when using this, the find expression must end with 
 	# -print or -exec, else the excluded directories will actually be
 	# printed!)
-	NOVCS='. -wholename ./.git -prune -o -wholename ./.bzr -prune -o -wholename ./.hg -prune -o -wholename ./_darcs -prune -o'
+	NOVCS='. -path ./.git -prune -o -path ./.bzr -prune -o -path ./.hg -prune -o -path ./_darcs -prune -o'
 
 	# Keep the sort order the same at all times.
 	LC_COLLATE=C

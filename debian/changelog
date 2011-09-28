@@ -1,3 +1,9 @@
+etckeeper (0.57) UNRELEASED; urgency=low
+
+  * Use find -path instead of less portable find -wholename.
+
+ -- Joey Hess <joeyh@debian.org>  Wed, 28 Sep 2011 12:10:53 -0400
+
 etckeeper (0.56) unstable; urgency=low
 
   * Converted to use dh_python2. Closes: #616800 
