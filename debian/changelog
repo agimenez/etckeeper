@@ -1,8 +1,8 @@
-etckeeper (0.57) UNRELEASED; urgency=low
+etckeeper (0.57) unstable; urgency=low
 
   * Use find -path instead of less portable find -wholename.
 
- -- Joey Hess <joeyh@debian.org>  Wed, 28 Sep 2011 12:10:53 -0400
+ -- Joey Hess <joeyh@debian.org>  Fri, 04 Nov 2011 17:03:46 -0400
 
 etckeeper (0.56) unstable; urgency=low
 
