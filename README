@@ -79,7 +79,7 @@ Darcs doesn't support symlinks, so they are also stored in
 A quick walkthrough of using etckeeper.
 
 Note that the default VCS is git, and this tutorial assumes you're using
-it. Using other VCSes should be broadly similar.
+it. Using other VCSes should be broadly similar. 
 
 The `etckeeper init` command initialises an /etc/.git/ repository. 
 If you installed etckeeper from a package, this was probably automatically
@@ -219,11 +219,22 @@ repository as a backup (see instructions above to set up the clone safely):
 
 ## changing VCS
 
-By default, etckeeper uses git. If you would like to use some other VCS,
-and `etckeeper init` has already been run to set up a git repository, you
-have a decision to make: Is the history recorded in that repository
-something you need to preserve, or can you afford to just blow it away
-and check the current /etc into the new VCS?
+By default, etckeeper uses git. This choice has been carefully made;
+git is the VCS best supported by etckeeper and the VCS users are most
+likely to know.
+
+[ It's possible that your distribution has chosen to modify etckeeper so
+  its default VCS is not git -- if they have please complain to them,
+  as they're making things unnecessarily difficult for you, and causing
+  unnecessary divergence of etckeeper installations. 
+  You should only be using etckeeper with a VCS other than git if you're
+  in love with the other VCS. ]
+
+If you would like to use some other VCS, and `etckeeper init` has already
+been run to set up a git repository, you have a decision to make: Is the
+history recorded in that repository something you need to preserve, or can
+you afford to just blow it away and check the current /etc into the new
+VCS?
 
 In the latter case, you just need to follow three steps:
 
