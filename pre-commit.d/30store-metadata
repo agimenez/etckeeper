@@ -30,13 +30,6 @@ filter_ignore() {
 	fi
 }
 
-statf() {
-	while read statfile; do
-		printf "$(stat --format="$1" "$statfile") "
-		echo "$statfile" | shellquote
-	done
-}
-
 shellquote() {
 	# Single quotes text, escaping existing single quotes.
 	sed -e "s/'/'\"'\"'/" -e "s/^/'/" -e "s/$/'/"
@@ -78,19 +71,40 @@ generate_metadata() {
 			printf "ln -sf '%s' '%s'\n" "$(echo "$dest" | shellquote)" "$(echo "$link" | shellquote)"
 		done
 	fi
-       	
-	# Find all files and directories that don't have the current user as the owner
-	find $NOVCS \! -user "$(id -u)" -print | statf "maybe chown %U" | sort | filter_unknown 'maybe chown' owner
-	# Find all files and directories that don't have root as the group
-	find $NOVCS \! -group $(id -g) -print | statf "maybe chgrp %G" | sort | filter_unknown 'maybe chgrp' group
-
+ 
+	# Store things that don't have the default user or group.
 	# Store all file modes, in case the user has an unusual umask.
 	find $NOVCS \( -type f -or -type d \) -print | sort | perl -ne '
 		BEGIN { $q=chr(39) }
+		sub uidname {
+			my $want=shift;
+			if (exists $uidcache{$want}) {
+				return $uidcache{$want};
+			}
+			return $uidcache{$want}=scalar getpwuid($want);
+		}
+		sub gidname {
+			my $want=shift;
+			if (exists $gidcache{$want}) {
+				return $gidcache{$want};
+			}
+			return $gidcache{$want}=scalar getgrgid($want);
+		}
 		chomp;
-		my $mode = (stat($_))[2];
+		my @stat=stat($_)
+		my $mode = $stat[2];
+		my $uid = $stat[4];
+		my $gid = $stat[5];
 		s/$q/$q"$q"$q/g; # escape single quotes
-		printf "maybe chmod %04o %s\n", $mode & 07777, "$q$_$q";
+		s/^/$q/;
+		s/$/$q/;
+		if ($uid != $>) {
+			printf "maybe chown %s %s\n", uidname($uid), $_;
+		}
+		if ($gid != $)) {
+			printf "maybe chgrp %s %s\n", gidname($uid), $_;
+		}
+		printf "maybe chmod %04o %s\n", $mode & 07777, $_;
 	'
 
 	# We don't handle xattrs.
