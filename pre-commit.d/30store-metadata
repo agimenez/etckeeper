@@ -32,8 +32,14 @@ filter_ignore() {
 
 statf() {
 	while read statfile; do
-		echo "$(stat --format="$1" "$statfile") '$statfile'"
+		printf "$(stat --format="$1" "$statfile") "
+		echo "$statfile" | shellquote
 	done
+}
+
+shellquote() {
+	# Single quotes text, escaping existing single quotes.
+	sed -e "s/'/'\"'\"'/" -e "s/^/'/" -e "s/$/'/"
 }
 
 generate_metadata() {
@@ -62,7 +68,7 @@ generate_metadata() {
 		# These version control systems do not track directories,
 		# so empty directories must be stored specially.
 		find $NOVCS -type d -empty -print |
-			sort | sed -e "s/^/mkdir -p '/" -e "s/\$/'/"
+			sort | shellquote | sed -e "s/^/mkdir -p /"
 	fi
 
 	if [ "$VCS" = darcs ]; then
@@ -70,7 +76,7 @@ generate_metadata() {
 		# so they must be stored specially.
 		find $NOVCS -type l -print | sort | filter_ignore | while read link; do
 			dest=$( readlink "$link" )
-			printf "ln -sf '%s' '%s'\n" "$dest" "$link"
+			printf "ln -sf '%s' '%s'\n" "$(echo "$dest" | shellquote)" "$(echo "$link" | shellquote)"
 		done
 	fi
        	
@@ -79,7 +85,7 @@ generate_metadata() {
 	# Find all files and directories that don't have root as the group
 	find $NOVCS \! -group $(id -g) -print | statf "maybe chgrp %G" | sort | filter_unknown 'maybe chgrp' group
 
-	find $NOVCS -print | statf "maybe chmod %a" | sort
+	find $NOVCS \( -type f -or -type d \) -print | statf "maybe chmod %a" | sort
 
 	# We don't handle xattrs.
 	# Maybe check for getfattr/setfattr and use them if they're available?

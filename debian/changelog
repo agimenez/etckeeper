@@ -8,6 +8,7 @@ etckeeper (0.58) UNRELEASED; urgency=low
     Thanks to Дмитрий Матросов for reporting the bug and developing
     a fixup script (attached to the bug) which could be used if you've
     already encountered this problem.
+  * Bugfix for filenames containing single quotes.
 
  -- Joey Hess <joeyh@debian.org>  Fri, 25 Nov 2011 12:00:55 -0400
 

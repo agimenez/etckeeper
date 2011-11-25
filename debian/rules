@@ -1,4 +1,7 @@
 #!/usr/bin/make -f
+
+export PYTHON_INSTALL_OPTS=--install-layout=deb
+
 %:
 	dh --with python2 $@
 
