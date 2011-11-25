@@ -9,6 +9,10 @@ etckeeper (0.58) UNRELEASED; urgency=low
     a fixup script (attached to the bug) which could be used if you've
     already encountered this problem.
   * Bugfix for filenames containing single quotes.
+  * Use git add -A, which automatically removes deleted files,
+    and avoids a separate call to git add -u.
+    Thanks to Miklos Vajna, whose patch in 2008 was deferred
+    because -A was then too new, and languished in a branch until found today.
 
  -- Joey Hess <joeyh@debian.org>  Fri, 25 Nov 2011 12:00:55 -0400
 
