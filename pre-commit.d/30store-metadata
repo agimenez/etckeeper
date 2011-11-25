@@ -45,8 +45,7 @@ shellquote() {
 generate_metadata() {
 	# This function generates the script commands to fix any file
 	# ownerships that aren't owner=root, group=root, as well as to 
-	# store the permissions of all files (all are needed because the
-	# user may have an unusual umask).
+	# store the permissions of files.
 	# The script is produced on stdout.  Errors go to stderr.
 	# 
 	# The script can use a 'maybe' function, which only runs a command
@@ -85,7 +84,14 @@ generate_metadata() {
 	# Find all files and directories that don't have root as the group
 	find $NOVCS \! -group $(id -g) -print | statf "maybe chgrp %G" | sort | filter_unknown 'maybe chgrp' group
 
-	find $NOVCS \( -type f -or -type d \) -print | statf "maybe chmod %a" | sort
+	# Store all file modes, in case the user has an unusual umask.
+	find $NOVCS \( -type f -or -type d \) -print | sort | perl -ne '
+		BEGIN { $q=chr(39) }
+		chomp;
+		my $mode = (stat($_))[2];
+		s/$q/$q"$q"$q/g; # escape single quotes
+		printf "maybe chmod %04o %s\n", $mode & 07777, "$q$_$q";
+	'
 
 	# We don't handle xattrs.
 	# Maybe check for getfattr/setfattr and use them if they're available?
