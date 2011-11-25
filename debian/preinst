@@ -75,7 +75,7 @@ install|upgrade)
 		done
 	fi
 	if dpkg --compare-versions "$2" le "0.58"; then
-		rm_conffile etckeeper "/etc/etckeeper/commit.d/40-git-rm"
+		rm_conffile etckeeper "/etc/etckeeper/commit.d/40git-rm"
 	fi
 
 	# delete files the prerm stashes away to handle purging
