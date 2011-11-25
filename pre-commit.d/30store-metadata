@@ -37,14 +37,16 @@ statf() {
 }
 
 generate_metadata() {
-	# This function generates the script commands to fix any files
-	# that aren't owner=root, group=root, or mode=0644 or 0755.
+	# This function generates the script commands to fix any file
+	# ownerships that aren't owner=root, group=root, as well as to 
+	# store the permissions of all files (all are needed because the
+	# user may have an unusual umask).
 	# The script is produced on stdout.  Errors go to stderr.
 	# 
 	# The script can use a 'maybe' function, which only runs a command
 	# if the file in its last argument exists.
 
-	# We maintain the permissions on the directory containing VCS data
+	# We want files in the directory containing VCS data
 	# but we want find to ignore the VCS files themselves.
 	# 
 	# (Note that when using this, the find expression must end with 
@@ -77,18 +79,7 @@ generate_metadata() {
 	# Find all files and directories that don't have root as the group
 	find $NOVCS \! -group $(id -g) -print | statf "maybe chgrp %G" | sort | filter_unknown 'maybe chgrp' group
 
-	# Find all directories that aren't 0755
-	find $NOVCS -type d \! -perm 0755 -print | statf "maybe chmod %a" | sort
-
-	if [ "$VCS" = darcs ]; then
-		# Find all files that aren't 0644 (darcs doesn't maintain
-		# the executable bit).
-		find $NOVCS -type f \! -perm 0644 -print | statf "maybe chmod %a" | sort
-	else
-		# Find all files that aren't 0644 or 0755 (we can assume the VCS will
-		# maintain the executable bit).
-		find $NOVCS -type f \! -perm 0644 \! -perm 0755 -print | statf "maybe chmod %a" | sort
-	fi
+	find $NOVCS -print | statf "maybe chmod %a" | sort
 
 	# We don't handle xattrs.
 	# Maybe check for getfattr/setfattr and use them if they're available?
