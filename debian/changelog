@@ -1,3 +1,9 @@
+etckeeper (0.58) UNRELEASED; urgency=low
+
+  * Bugfix for filenames containing single quotes.
+
+ -- Joey Hess <joeyh@debian.org>  Fri, 25 Nov 2011 12:00:55 -0400
+
 etckeeper (0.57) unstable; urgency=low
 
   * Use find -path instead of less portable find -wholename.
