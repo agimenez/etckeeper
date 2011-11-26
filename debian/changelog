@@ -14,6 +14,9 @@ etckeeper (0.58) UNRELEASED; urgency=low
     Thanks to Miklos Vajna, whose patch in 2008 was deferred
     because -A was then too new, and languished in a branch until found today.
   * Optimised metadata storage.
+  * cron.daily: Don't stop committing when a stale packagelist.pre-install
+    file exists.
+    Thanks to gulikoza for noticing this bug.
 
  -- Joey Hess <joeyh@debian.org>  Fri, 25 Nov 2011 12:00:55 -0400
 
