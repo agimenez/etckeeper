@@ -1,4 +1,4 @@
-etckeeper (0.58) UNRELEASED; urgency=low
+etckeeper (0.58) unstable; urgency=low
 
   * Changed to store all permissions of files and directories, even those
     with standard permissions of 644 and 755. This is unfortunately necessary
@@ -18,7 +18,7 @@ etckeeper (0.58) UNRELEASED; urgency=low
     file exists.
     Thanks to gulikoza for noticing this bug.
 
- -- Joey Hess <joeyh@debian.org>  Fri, 25 Nov 2011 12:00:55 -0400
+ -- Joey Hess <joeyh@debian.org>  Fri, 25 Nov 2011 20:03:36 -0400
 
 etckeeper (0.57) unstable; urgency=low
 
