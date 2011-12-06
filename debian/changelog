@@ -1,3 +1,11 @@
+etckeeper (0.59) UNRELEASED; urgency=low
+
+  * Add /etc/cups/subscriptions.conf to default ignores, as the content of
+    this file does not normally contain configuration and it changes
+    frequently. Closes: #651168
+
+ -- Joey Hess <joeyh@debian.org>  Tue, 06 Dec 2011 15:26:18 -0400
+
 etckeeper (0.58) unstable; urgency=low
 
   * Changed to store all permissions of files and directories, even those
