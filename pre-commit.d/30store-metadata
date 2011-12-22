@@ -32,7 +32,7 @@ filter_ignore() {
 
 shellquote() {
 	# Single quotes text, escaping existing single quotes.
-	sed -e "s/'/'\"'\"'/" -e "s/^/'/" -e "s/$/'/"
+	sed -e "s/'/'\"'\"'/g" -e "s/^/'/" -e "s/$/'/"
 }
 
 generate_metadata() {
