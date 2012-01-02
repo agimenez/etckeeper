@@ -1,3 +1,9 @@
+etckeeper (0.60) UNRELEASED; urgency=low
+
+  * Updated Dutch translation of debconf templates. Closes: #654244
+
+ -- Joey Hess <joeyh@debian.org>  Mon, 02 Jan 2012 11:40:20 -0400
+
 etckeeper (0.59) unstable; urgency=low
 
   * Add /etc/cups/subscriptions.conf to default ignores, as the content of
