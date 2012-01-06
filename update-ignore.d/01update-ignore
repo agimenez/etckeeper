@@ -143,8 +143,8 @@ writefile () {
 	ignore "*.pyo"
 	ignore "init.d/.depend.*"
 	ignore "openvpn/openvpn-status.log"
-	ignore "etc/cups/subscriptions.conf"
-	ignore "etc/cups/subscriptions.conf.O"
+	ignore "cups/subscriptions.conf"
+	ignore "cups/subscriptions.conf.O"
 	nl
 	
 	comment "editor temp files"
