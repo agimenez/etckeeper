@@ -1,10 +1,12 @@
-etckeeper (0.60) UNRELEASED; urgency=low
+etckeeper (0.60) unstable; urgency=low
 
   * Updated Dutch translation of debconf templates. Closes: #654244
   * Support -h and --help. Closes: #654188
   * Fix typo in bugfix for #651168.
+  * Improve yum hook to avoid running if etckeeper was just removed.
+    Thanks, Mykola Marzhan
 
- -- Joey Hess <joeyh@debian.org>  Mon, 02 Jan 2012 11:40:20 -0400
+ -- Joey Hess <joeyh@debian.org>  Fri, 06 Jan 2012 19:23:42 -0400
 
 etckeeper (0.59) unstable; urgency=low
 

@@ -33,6 +33,7 @@ def pretrans_hook(conduit):
 
 def posttrans_hook(conduit):
     conduit.info(2, 'etckeeper: post transaction commit')
-    servicecmd = conduit.confString('main', 'servicecmd', '/usr/bin/etckeeper')
-    command = '%s %s > /dev/null' % (servicecmd, "post-install")
-    os.system(command)
+    if os.path.exists('/usr/bin/etckeeper'):
+	    servicecmd = conduit.confString('main', 'servicecmd', '/usr/bin/etckeeper')
+	    command = '%s %s > /dev/null' % (servicecmd, "post-install")
+	    os.system(command)
