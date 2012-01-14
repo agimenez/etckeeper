@@ -74,7 +74,7 @@ install|upgrade)
 			rm_conffile etckeeper "/etc/etckeeper/pre-commit.d/$c"
 		done
 	fi
-	if dpkg --compare-versions "$2" le "0.58"; then
+	if dpkg --compare-versions "$2" le "0.61"; then
 		rm_conffile etckeeper "/etc/etckeeper/commit.d/40git-rm"
 	fi
 

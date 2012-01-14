@@ -1,3 +1,11 @@
+etckeeper (0.61) UNRELEASED; urgency=low
+
+  * Fix up botched git-rm conffile removal from 0.58.
+    The file could be in any of three states; absent, present, or .dpkg-dist.
+    Finish fully removing it. Closes: #655836
+
+ -- Joey Hess <joeyh@debian.org>  Sat, 14 Jan 2012 12:30:07 -0400
+
 etckeeper (0.60) unstable; urgency=low
 
   * Updated Dutch translation of debconf templates. Closes: #654244
