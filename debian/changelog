@@ -1,8 +1,8 @@
-etckeeper (0.62) UNRELEASED; urgency=low
+etckeeper (0.62) unstable; urgency=low
 
   * Autocommit git staged files. Closes: #662614
 
- -- Joey Hess <joeyh@debian.org>  Mon, 05 Mar 2012 10:41:15 -0400
+ -- Joey Hess <joeyh@debian.org>  Mon, 05 Mar 2012 10:41:46 -0400
 
 etckeeper (0.61) unstable; urgency=low
 
