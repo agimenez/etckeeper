@@ -54,15 +54,15 @@ storage, empty directories, and special files.
 Most VCS, including git, mercurial and bazaar have only limited tracking of
 file metadata, being able to track the executable bit, but not other
 permissions or owner info. (darcs doesn't even track executable bits.) So
-file metadata storage is stored separately. Among other chores, `etckeeper
-init` sets up a `pre-commit` hook that stores metadata about file owners
-and permissions into a `/etc/.metadata` file. This metadata is stored in
+file metadata is stored separately. Among other chores, `etckeeper init`
+sets up a `pre-commit` hook that stores metadata about file owners and
+permissions into a `/etc/.etckeeper` file. This metadata is stored in
 version control along with everything else, and can be applied if the repo
 should need to be checked back out.
 
 git and mercurial cannot track empty directories, but they can be
 significant sometimes in /etc. So the `pre-commit` hook also stores
-information that can be used to recreate the empty directories in a
+information that can be used to recreate the empty directories in the
 `/etc/.etckeeper` file.
 
 Most VCS don't support several special files that you _probably_ won't have
@@ -134,7 +134,7 @@ make sure you run "etckeeper init" again, to get any metadata changes:
 Often it's better to clone /etc to elsewhere and do potentially dangerous
 stuff in a staging directory. You can clone the repository using git clone,
 but be careful that the directory it's cloned into starts out mode 700, to
-prevent anyone else from seeing files like shadow, before `etckeeper init`
+prevent anyone else from seeing files like `shadow`, before `etckeeper init`
 fixes their permissions:
 
 	mkdir /my/workdir
@@ -146,8 +146,8 @@ fixes their permissions:
 	chmod 755 ..
 
 Another common reason to clone the repository is to make a backup to a
-server. When using git push to create a new remote clone, make sure the new
-remote clone is mode 700! (And, obviously, only push over a secure
+server. When using `git push` to create a new remote clone, make sure the
+new remote clone is mode 700! (And, obviously, only push over a secure
 transport like ssh, and only to a server you trust.)
 
 	ssh server 'mkdir /etc-clone; cd /etc-clone; chmod 700 .; git init --bare'
@@ -204,7 +204,7 @@ which will save a lot of disk space:
 	git commit -m "run git gc after each apt run"
 
 Here's how to disable the automatic commits after each apt run, while still
-letting it git add new files and git rm removed ones:
+letting it git add new files:
 
 	chmod -x /etc/etckeeper/commit.d/50vcs-commit
 
