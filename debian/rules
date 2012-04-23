@@ -1,6 +1,9 @@
 #!/usr/bin/make -f
+
+export PYTHON_INSTALL_OPTS=--install-layout=deb
+
 %:
-	dh --with python-central $@
+	dh --with python2 $@
 
 # Not intended for use by anyone except the author.
 announcedir:

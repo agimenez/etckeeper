@@ -1,8 +1,0 @@
-#!/bin/sh
-set -e
-
-if [ "$VCS" = git ] && [ -d .git ]; then
-	if ! git add . -u; then
-		echo "etckeeper warning: git add -u failed" >&2
-	fi
-fi

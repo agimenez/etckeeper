@@ -25,7 +25,7 @@ filter_ignore() {
 
 
 if [ "$VCS" = darcs ];then
-	NOVCS='. -wholename ./.git -prune -o -wholename ./.bzr -prune -o -wholename ./.hg -prune -o -wholename ./_darcs -prune -o'
+	NOVCS='. -path ./.git -prune -o -path ./.bzr -prune -o -path ./.hg -prune -o -path ./_darcs -prune -o'
 
 	# We assume that if .etckeeper is empty this is the first run
 	if [ -s .etckeeper ]; then

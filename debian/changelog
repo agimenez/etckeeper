@@ -1,4 +1,93 @@
-etckeeper (0.54) UNRELEASED; urgency=low
+etckeeper (0.63) UNRELEASED; urgency=low
+
+  * bzr: Improve detection of unclean repos, to work when there are shelved
+    changes.
+
+ -- Joey Hess <joeyh@debian.org>  Fri, 20 Apr 2012 13:37:53 -0400
+
+etckeeper (0.62) unstable; urgency=low
+
+  * Autocommit git staged files. Closes: #662614
+
+ -- Joey Hess <joeyh@debian.org>  Mon, 05 Mar 2012 10:41:46 -0400
+
+etckeeper (0.61) unstable; urgency=low
+
+  * Fix up botched git-rm conffile removal from 0.58.
+    The file could be in any of three states; absent, present, or .dpkg-dist.
+    Finish fully removing it. Closes: #655836
+
+ -- Joey Hess <joeyh@debian.org>  Sat, 14 Jan 2012 12:42:50 -0400
+
+etckeeper (0.60) unstable; urgency=low
+
+  * Updated Dutch translation of debconf templates. Closes: #654244
+  * Support -h and --help. Closes: #654188
+  * Fix typo in bugfix for #651168.
+  * Improve yum hook to avoid running if etckeeper was just removed.
+    Thanks, Mykola Marzhan
+
+ -- Joey Hess <joeyh@debian.org>  Fri, 06 Jan 2012 19:23:42 -0400
+
+etckeeper (0.59) unstable; urgency=low
+
+  * Add /etc/cups/subscriptions.conf to default ignores, as the content of
+    this file does not normally contain configuration and it changes
+    frequently. Closes: #651168
+  * Shell quoting fix. Thanks, Daniel Hahler
+
+ -- Joey Hess <joeyh@debian.org>  Thu, 22 Dec 2011 11:48:50 -0400
+
+etckeeper (0.58) unstable; urgency=low
+
+  * Changed to store all permissions of files and directories, even those
+    with standard permissions of 644 and 755. This is unfortunately necessary
+    in order to support etckeeper init on a checkout that was made with a
+    nonstandard umask, in which case the files that were expected to be
+    644 and 755, won't be. Closes: #649701
+    Thanks to Дмитрий Матросов for reporting the bug and developing
+    a fixup script (attached to the bug) which could be used if you've
+    already encountered this problem.
+  * Bugfix for filenames containing single quotes.
+  * Use git add -A, which automatically removes deleted files,
+    and avoids a separate call to git add -u.
+    Thanks to Miklos Vajna, whose patch in 2008 was deferred
+    because -A was then too new, and languished in a branch until found today.
+  * Optimised metadata storage.
+  * cron.daily: Don't stop committing when a stale packagelist.pre-install
+    file exists.
+    Thanks to gulikoza for noticing this bug.
+
+ -- Joey Hess <joeyh@debian.org>  Fri, 25 Nov 2011 20:03:36 -0400
+
+etckeeper (0.57) unstable; urgency=low
+
+  * Use find -path instead of less portable find -wholename.
+
+ -- Joey Hess <joeyh@debian.org>  Fri, 04 Nov 2011 17:03:46 -0400
+
+etckeeper (0.56) unstable; urgency=low
+
+  * Converted to use dh_python2. Closes: #616800 
+  * Handle files with % in their names.
+
+ -- Joey Hess <joeyh@debian.org>  Tue, 12 Jul 2011 14:38:09 -0400
+
+etckeeper (0.55) unstable; urgency=low
+
+  * Fix error propigation to yum, which makes AVOID_COMMIT_BEFORE_INSTALL work.
+    Closes: https://bugzilla.redhat.com/show_bug.cgi?id=709487
+    Thanks, Thomas Moschny
+  * Avoid being noisy in post-install after automatic yum updates.
+    (Tuomo Soini)
+  * Ignore FHS violating prelink.cache and openvpn-status.log.
+  * Ignore *.LOCK files, as used by selinux policies.
+  * Add AVOID_SPECIAL_FILE_WARNING to config file, and set it in cron
+    job to avoid daily noise. (gulikoza)
+
+ -- Joey Hess <joeyh@debian.org>  Sun, 19 Jun 2011 15:21:20 -0400
+
+etckeeper (0.54) unstable; urgency=low
 
   * Ignore inssev's FHS violating /etc/init.d/.depend.* files.
     Closes: #619407 See #619409
@@ -7,7 +96,7 @@ etckeeper (0.54) UNRELEASED; urgency=low
     determined and so .etckeeper cannot be staged as part of the current
     commit. Closes: #621827
 
- -- Joey Hess <joeyh@debian.org>  Fri, 25 Mar 2011 15:14:32 -0400
+ -- Joey Hess <joeyh@debian.org>  Mon, 30 May 2011 18:11:40 -0400
 
 etckeeper (0.53) unstable; urgency=low
 

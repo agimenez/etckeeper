@@ -18,11 +18,11 @@ else
 	special=""
 fi
 	
-if [ -n "$special" ]; then
+if [ -n "$special" ] && [ -z "$AVOID_SPECIAL_FILE_WARNING" ]; then
 	echo "etckeeper warning: special files could cause problems with $VCS:" >&2
 	echo "$special" >&2
 fi
-if [ -n "$hardlinks" ]; then
+if [ -n "$hardlinks" ] && [ -z "$AVOID_SPECIAL_FILE_WARNING" ]; then
 	echo "etckeeper warning: hardlinked files could cause problems with $VCS:" >&2
 	echo "$hardlinks" >&2
 fi

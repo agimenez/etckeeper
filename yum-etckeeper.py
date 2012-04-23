@@ -18,7 +18,7 @@ import os
 from glob import fnmatch
 
 import yum
-from yum.plugins import TYPE_CORE
+from yum.plugins import PluginYumExit, TYPE_CORE
 
 requires_api_version = '2.1'
 plugin_type = (TYPE_CORE,)
@@ -27,10 +27,13 @@ def pretrans_hook(conduit):
     conduit.info(2, 'etckeeper: pre transaction commit')
     servicecmd = conduit.confString('main', 'servicecmd', '/usr/bin/etckeeper')
     command = '%s %s' % (servicecmd, " pre-install")
-    os.system(command)
+    ret = os.system(command)
+    if ret != 0:
+        raise PluginYumExit('etckeeper returned %d' % (ret >> 8))
 
 def posttrans_hook(conduit):
     conduit.info(2, 'etckeeper: post transaction commit')
-    servicecmd = conduit.confString('main', 'servicecmd', '/usr/bin/etckeeper')
-    command = '%s %s' % (servicecmd, "post-install")
-    os.system(command)
+    if os.path.exists('/usr/bin/etckeeper'):
+	    servicecmd = conduit.confString('main', 'servicecmd', '/usr/bin/etckeeper')
+	    command = '%s %s > /dev/null' % (servicecmd, "post-install")
+	    os.system(command)

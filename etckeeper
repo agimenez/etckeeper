@@ -50,6 +50,9 @@ fi
 if [ ! -z "$AVOID_COMMIT_BEFORE_INSTALL" ]; then
 	export AVOID_COMMIT_BEFORE_INSTALL
 fi
+if [ ! -z "$AVOID_SPECIAL_FILE_WARNING" ]; then
+	export AVOID_SPECIAL_FILE_WARNING
+fi
 
 if [ ! -z "$PUSH_REMOTE" ]; then
 	export PUSH_REMOTE
@@ -57,6 +60,9 @@ fi
 
 if [ -z "$1" ]; then
 	usage
+elif [ "x$1" = "x-h" ] || [ "x$1" = "x--help" ]; then
+	man etckeeper || echo "Usage: etckeeper command [-d directory]" >&2
+	exit 0
 fi
 command="$1"
 shift 1
