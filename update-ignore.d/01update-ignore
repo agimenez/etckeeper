@@ -160,8 +160,14 @@ writefile () {
 
 if [ -e "$file" ]; then
 	if ! grep -q "$managed_by_etckeeper" "$file"; then
-		echo "etckeeper: "$file" does not contain \"$managed_by_etckeeper\" comment; not updating"
-		exit 1
+		if [ "$1" != "-a" ]; then
+			echo "etckeeper: "$file" does not contain \"$managed_by_etckeeper\" comment; not updating"
+			exit 1
+		else
+			echo "etckeeper: "$file" exists but does not contain \"$managed_by_etckeeper\" comment; updating"
+			writefile
+			exit 0
+		fi
 	fi
 	realfile="$file"
 	if [ -n "`type -p tempfile`" ]; then

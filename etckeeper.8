@@ -41,10 +41,11 @@ repository. (You can also call this by hand after running dpkg by hand.)
 .B unclean
 This returns true if the directory contains uncommitted changes.
 .TP
-.B update-ignore
+.B update-ignore [-a]
 This updates the VCS ignore file. Content outside a "managed by etckeeper"
 block is not touched. This is generally run when upgrading to a new version
-of etckeeper.
+of etckeeper. (The -a switch will add a "managed by etckeeper" block if
+one is not present.)
 .TP
 .B vcs subcommand [options ...]
 You can use this to run any subcommand of the VCS that etckeeper is
