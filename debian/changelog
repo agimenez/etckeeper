@@ -1,4 +1,4 @@
-etckeeper (0.63) UNRELEASED; urgency=low
+etckeeper (0.63) unstable; urgency=low
 
   * bzr: Improve detection of unclean repos, to work when there are shelved
     changes.
@@ -6,7 +6,7 @@ etckeeper (0.63) UNRELEASED; urgency=low
     are outside the managed by etckeeper block. Closes: #673996
     Thanks, David De La Harpe Golden (Squared Financial)
 
- -- Joey Hess <joeyh@debian.org>  Fri, 20 Apr 2012 13:37:53 -0400
+ -- Joey Hess <joeyh@debian.org>  Sat, 02 Jun 2012 18:22:37 -0400
 
 etckeeper (0.62) unstable; urgency=low
 
