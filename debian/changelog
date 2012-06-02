@@ -2,6 +2,9 @@ etckeeper (0.63) UNRELEASED; urgency=low
 
   * bzr: Improve detection of unclean repos, to work when there are shelved
     changes.
+  * uninit: Now preserves parts of the gitignore and similar files that
+    are outside the managed by etckeeper block. Closes: #673996
+    Thanks, David De La Harpe Golden (Squared Financial)
 
  -- Joey Hess <joeyh@debian.org>  Fri, 20 Apr 2012 13:37:53 -0400
 
