@@ -1,3 +1,9 @@
+etckeeper (0.64) UNRELEASED; urgency=low
+
+  * Avoid hardcoded path in apt.conf. Closes: #683778
+
+ -- Joey Hess <joeyh@debian.org>  Fri, 03 Aug 2012 20:52:19 -0400
+
 etckeeper (0.63) unstable; urgency=low
 
   * bzr: Improve detection of unclean repos, to work when there are shelved
