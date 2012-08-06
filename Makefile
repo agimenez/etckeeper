@@ -36,6 +36,9 @@ ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),yum)
 	$(INSTALL_DATA) yum-etckeeper.py $(DESTDIR)$(prefix)/lib/yum-plugins/etckeeper.py
 	$(INSTALL_DATA) yum-etckeeper.conf $(DESTDIR)$(etcdir)/yum/pluginconf.d/etckeeper.conf
 endif
+ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),zypper)
+	$(INSTALL_DATA) zypper-etckeeper.py $(DESTDIR)$(prefix)/lib/zypp/plugins/commit/zypper-etckeeper.py
+endif
 	-./etckeeper-bzr/__init__.py install --root=$(DESTDIR) ${PYTHON_INSTALL_OPTS} || echo "** bzr support not installed"
 	echo "** installation successful"
 
