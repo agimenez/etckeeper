@@ -2,6 +2,8 @@ etckeeper (0.64) UNRELEASED; urgency=low
 
   * Added support for openSUSE's zypper package manager.
     Thanks, Catalin Iacob
+  * Add Brazilian Portuguese debconf translation.
+    Closes: #685771 Thanks, Adriano Rafael Gomes
 
  -- Joey Hess <joeyh@debian.org>  Mon, 06 Aug 2012 17:17:25 -0400
 
