@@ -1,3 +1,9 @@
+etckeeper (0.65) UNRELEASED; urgency=low
+
+  * Unset GIT_DIR and GIT_WORK_TREE. Closes: #689101
+
+ -- Joey Hess <joeyh@debian.org>  Sat, 29 Sep 2012 10:46:21 -0400
+
 etckeeper (0.64) unstable; urgency=low
 
   * Added support for openSUSE's zypper package manager.

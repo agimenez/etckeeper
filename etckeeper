@@ -22,6 +22,9 @@ if [ -z "$VCS" ]; then
 fi
 export VCS
 
+unset GIT_WORK_TREE
+unset GIT_DIR
+
 program_directory="${0%/*}"
 if [ -n "$program_directory" ]; then
 	PATH="$PATH:$program_directory"
