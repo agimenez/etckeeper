@@ -57,6 +57,10 @@ if [ ! -z "$AVOID_SPECIAL_FILE_WARNING" ]; then
 	export AVOID_SPECIAL_FILE_WARNING
 fi
 
+if [ ! -z "$PUSH_REMOTE" ]; then
+	export PUSH_REMOTE
+fi
+
 if [ -z "$1" ]; then
 	usage
 elif [ "x$1" = "x-h" ] || [ "x$1" = "x--help" ]; then

@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+if [ "$VCS" = git ] && [ -d .git ] && [ -n "$PUSH_REMOTE" ]; then
+	if git config --get remote.$PUSH_REMOTE.url; then
+		git push $PUSH_REMOTE master
+	else
+		echo "etckeeper warning: Configured remote '$PUSH_REMOTE' is unknown to git"
+	fi
+fi
