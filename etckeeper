@@ -16,6 +16,16 @@ if [ -e $conf ]; then
 	. $conf
 fi
 
+if [ -d ".git" ]; then
+	VCS=git
+elif [ -d ".hg" ]; then
+	VCS=hg
+elif [ -d "_darcs" ]; then
+	VCS=darcs
+elif [ -d ".bzr" ]; then
+	VCS=bzr
+fi
+
 if [ -z "$VCS" ]; then
 	echo "Please configure a VCS in $conf" >&2
 	exit 1

@@ -1,8 +1,13 @@
 etckeeper (0.65) UNRELEASED; urgency=low
 
+  [ Joey Hess ]
   * Unset GIT_DIR and GIT_WORK_TREE. Closes: #689101
   * PUSH_REMOTE can be set to automatically push to a remote on commit.
     Thanks, L. Alberto Giménez
+
+  [ Jelmer Vernooij ]
+  * Auto-detect the VCS setting if there already is a repository in
+    /etc.
 
  -- Joey Hess <joeyh@debian.org>  Sat, 29 Sep 2012 10:46:21 -0400
 
