@@ -16,22 +16,6 @@ if [ -e $conf ]; then
 	. $conf
 fi
 
-if [ -d ".git" ]; then
-	VCS=git
-elif [ -d ".hg" ]; then
-	VCS=hg
-elif [ -d "_darcs" ]; then
-	VCS=darcs
-elif [ -d ".bzr" ]; then
-	VCS=bzr
-fi
-
-if [ -z "$VCS" ]; then
-	echo "Please configure a VCS in $conf" >&2
-	exit 1
-fi
-export VCS
-
 unset GIT_WORK_TREE
 unset GIT_DIR
 
@@ -106,6 +90,22 @@ if [ -z "$ETCKEEPER_DIR" ]; then
 fi
 cd "$ETCKEEPER_DIR"
 export ETCKEEPER_DIR
+
+if [ -d ".git" ]; then
+	VCS=git
+elif [ -d ".hg" ]; then
+	VCS=hg
+elif [ -d "_darcs" ]; then
+	VCS=darcs
+elif [ -d ".bzr" ]; then
+	VCS=bzr
+fi
+
+if [ -z "$VCS" ]; then
+	echo "Please configure a VCS in $conf" >&2
+	exit 1
+fi
+export VCS
 
 lsscripts() {
 	perl -e '
