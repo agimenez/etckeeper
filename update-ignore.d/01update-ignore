@@ -145,6 +145,7 @@ writefile () {
 	ignore "openvpn/openvpn-status.log"
 	ignore "cups/subscriptions.conf"
 	ignore "cups/subscriptions.conf.O"
+	ignore "fake-hwclock.data"
 	nl
 	
 	comment "editor temp files"
