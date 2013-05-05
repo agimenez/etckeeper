@@ -1,4 +1,4 @@
-etckeeper (0.65) UNRELEASED; urgency=low
+etckeeper (1.0) unstable; urgency=low
 
   [ Joey Hess ]
   * Unset GIT_DIR and GIT_WORK_TREE. Closes: #689101
@@ -10,7 +10,7 @@ etckeeper (0.65) UNRELEASED; urgency=low
   * Auto-detect the VCS setting if there already is a repository in
     /etc.
 
- -- Joey Hess <joeyh@debian.org>  Sat, 29 Sep 2012 10:46:21 -0400
+ -- Joey Hess <joeyh@debian.org>  Sat, 04 May 2013 23:45:25 -0400
 
 etckeeper (0.64) unstable; urgency=low
 
