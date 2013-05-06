@@ -171,9 +171,9 @@ if [ -e "$file" ]; then
 		fi
 	fi
 	realfile="$file"
-	if [ -n "`type -p tempfile`" ]; then
+	if type -p tempfile >/dev/null 2>&1; then
 		tempfile="tempfile"
-	elif [ -n "`type -p mktemp`" ]; then
+	elif type -p mktemp >/dev/null 2>&1; then
 		tempfile="mktemp"
 	else
 		echo "etckeeper warning: can't find tempfile or mktemp" >&2

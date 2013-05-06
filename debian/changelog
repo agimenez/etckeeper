@@ -1,3 +1,9 @@
+etckeeper (1.2) UNRELEASED; urgency=low
+
+  * Call type -p in a more compatable way.
+
+ -- Joey Hess <joeyh@debian.org>  Mon, 06 May 2013 11:26:29 -0400
+
 etckeeper (1.1) unstable; urgency=low
 
   * Fix warning when PUSH_REMOTE is not set. Closes: #706917
