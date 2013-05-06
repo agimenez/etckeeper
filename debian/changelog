@@ -1,8 +1,8 @@
-etckeeper (1.1) UNRELEASED; urgency=low
+etckeeper (1.1) unstable; urgency=low
 
   * Fix warning when PUSH_REMOTE is not set. Closes: #706917
 
- -- Joey Hess <joeyh@debian.org>  Mon, 06 May 2013 09:49:02 -0400
+ -- Joey Hess <joeyh@debian.org>  Mon, 06 May 2013 09:49:24 -0400
 
 etckeeper (1.0) unstable; urgency=low
 
