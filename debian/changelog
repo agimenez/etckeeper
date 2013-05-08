@@ -1,11 +1,11 @@
-etckeeper (1.2) UNRELEASED; urgency=low
+etckeeper (1.2) unstable; urgency=low
 
   * Call type -p in a more compatable way.
   * When a file is owned by a uid or a gid with no corresponding user or
     group, put a numeric chown into .etckeeper. Previously, a broken
     chown was outputted.
 
- -- Joey Hess <joeyh@debian.org>  Mon, 06 May 2013 11:26:29 -0400
+ -- Joey Hess <joeyh@debian.org>  Wed, 08 May 2013 11:51:51 -0400
 
 etckeeper (1.1) unstable; urgency=low
 
