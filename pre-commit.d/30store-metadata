@@ -81,14 +81,16 @@ generate_metadata() {
 			if (exists $uidcache{$want}) {
 				return $uidcache{$want};
 			}
-			return $uidcache{$want}=scalar getpwuid($want);
+			my $name=scalar getpwuid($want);
+			return $uidcache{$want}=defined $name ? $name : $want;
 		}
 		sub gidname {
 			my $want=shift;
 			if (exists $gidcache{$want}) {
 				return $gidcache{$want};
 			}
-			return $gidcache{$want}=scalar getgrgid($want);
+			my $name=scalar getgrgid($want);
+			return $gidcache{$want}=defined $name ? $name : $want;
 		}
 		chomp;
 		my @stat=stat($_);
