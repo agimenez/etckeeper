@@ -1,3 +1,9 @@
+etckeeper (1.3) unstable; urgency=low
+
+  * Fix type -p bashism that crept in via recent patches. Closes: #707319
+
+ -- Joey Hess <joeyh@debian.org>  Wed, 08 May 2013 22:36:30 -0400
+
 etckeeper (1.2) unstable; urgency=low
 
   * Call type -p in a more compatable way.
