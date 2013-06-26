@@ -101,10 +101,10 @@ generate_metadata() {
 		s/^/$q/;
 		s/$/$q/;
 		if ($uid != $>) {
-			printf "maybe chown %s %s\n", uidname($uid), $_;
+			printf "maybe chown $q%s$q %s\n", uidname($uid), $_;
 		}
 		if ($gid != $)) {
-			printf "maybe chgrp %s %s\n", gidname($gid), $_;
+			printf "maybe chgrp $q%s$q %s\n", gidname($gid), $_;
 		}
 		printf "maybe chmod %04o %s\n", $mode & 07777, $_;
 	'

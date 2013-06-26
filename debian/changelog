@@ -1,3 +1,10 @@
+etckeeper (1.5) UNRELEASED; urgency=low
+
+  * Quote user and group names, in case someone thought putting a space
+    in one was not a bloody stupid idea.
+
+ -- Joey Hess <joeyh@debian.org>  Wed, 26 Jun 2013 13:15:03 -0400
+
 etckeeper (1.4) unstable; urgency=low
 
   * Deal with unix^wlinux portability nonsense.
