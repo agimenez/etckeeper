@@ -4,6 +4,9 @@ etckeeper (1.5) UNRELEASED; urgency=low
     in one was not a bloody stupid idea.
   * Added support for the pacman package manager.
     (Thanks, Tiago Stürmer Daitx)
+  * Use user.name and user.email from the .gitconfig file belonging to the
+    user who sued or sudoed to root, in preference to making up values for
+    that user.
 
  -- Joey Hess <joeyh@debian.org>  Wed, 26 Jun 2013 13:15:03 -0400
 
