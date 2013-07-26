@@ -1,7 +1,6 @@
-etckeeper (1.5) UNRELEASED; urgency=low
+etckeeper (1.5) unstable; urgency=low
 
-  * Quote user and group names, in case someone thought putting a space
-    in one was not a bloody stupid idea.
+  * Quote user and group names, in case one contains a space.
   * Added support for the pacman package manager.
     (Thanks, Tiago Stürmer Daitx)
   * Use user.name and user.email from the .gitconfig file belonging to the
@@ -10,7 +9,7 @@ etckeeper (1.5) UNRELEASED; urgency=low
   * cron.daily: Fix typo in stale lockfile handling code.
     Closes: #717908
 
- -- Joey Hess <joeyh@debian.org>  Wed, 26 Jun 2013 13:15:03 -0400
+ -- Joey Hess <joeyh@debian.org>  Fri, 26 Jul 2013 11:03:48 -0400
 
 etckeeper (1.4) unstable; urgency=low
 
