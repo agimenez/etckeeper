@@ -1,3 +1,9 @@
+etckeeper (1.6) UNRELEASED; urgency=low
+
+  * Guard git config calls. Closes: #717957
+
+ -- Joey Hess <joeyh@debian.org>  Sat, 27 Jul 2013 12:24:11 -0400
+
 etckeeper (1.5) unstable; urgency=low
 
   * Quote user and group names, in case one contains a space.
