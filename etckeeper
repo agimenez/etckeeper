@@ -1,0 +1,121 @@
+#!/bin/sh
+set -e
+
+if [ -z "$ETCKEEPER_CONF_DIR" ]; then
+	ETCKEEPER_CONF_DIR=/etc/etckeeper
+fi
+
+conf="$ETCKEEPER_CONF_DIR/etckeeper.conf"
+
+usage() {
+	echo "usage: etckeeper command [-d directory]" >&2
+	exit 1
+}
+
+if [ -e $conf ]; then
+	. $conf
+fi
+
+unset GIT_WORK_TREE
+unset GIT_DIR
+
+program_directory="${0%/*}"
+if [ -n "$program_directory" ]; then
+	PATH="$PATH:$program_directory"
+	export PATH
+fi
+
+if [ ! -z "$GIT_COMMIT_OPTIONS" ]; then
+	export GIT_COMMIT_OPTIONS
+fi
+if [ ! -z "$HG_COMMIT_OPTIONS" ]; then
+	export HG_COMMIT_OPTIONS
+fi
+if [ ! -z "$BZR_COMMIT_OPTIONS" ]; then
+	export BZR_COMMIT_OPTIONS
+fi
+if [ ! -z "$DARCS_COMMIT_OPTIONS" ]; then
+	export DARCS_COMMIT_OPTIONS
+fi
+
+if [ ! -z "$HIGHLEVEL_PACKAGE_MANAGER" ]; then
+	export HIGHLEVEL_PACKAGE_MANAGER
+fi
+if [ ! -z "$LOWLEVEL_PACKAGE_MANAGER" ]; then
+	export LOWLEVEL_PACKAGE_MANAGER
+fi
+if [ ! -z "$AVOID_COMMIT_BEFORE_INSTALL" ]; then
+	export AVOID_COMMIT_BEFORE_INSTALL
+fi
+if [ ! -z "$AVOID_SPECIAL_FILE_WARNING" ]; then
+	export AVOID_SPECIAL_FILE_WARNING
+fi
+
+if [ ! -z "$PUSH_REMOTE" ]; then
+	export PUSH_REMOTE
+fi
+
+if [ -z "$1" ]; then
+	usage
+elif [ "x$1" = "x-h" ] || [ "x$1" = "x--help" ]; then
+	man etckeeper || echo "Usage: etckeeper command [-d directory]" >&2
+	exit 0
+fi
+command="$1"
+shift 1
+
+# compatability code
+if [ "$command" = "post-apt" ]; then
+	command=post-install
+elif [ "$command" = "pre-apt" ]; then
+	command=pre-install
+fi
+
+if [ ! -d "$ETCKEEPER_CONF_DIR/$command.d" ]; then
+	echo "etckeeper: $ETCKEEPER_CONF_DIR/$command.d does not exist" >&2
+	exit 1
+fi
+
+if [ "x$1" = "x-d" ]; then
+	if [ -n "$2" ]; then
+		ETCKEEPER_DIR="$2"
+		shift 2
+	else
+		usage
+	fi
+fi
+
+if [ -z "$ETCKEEPER_DIR" ]; then
+	ETCKEEPER_DIR=/etc
+fi
+cd "$ETCKEEPER_DIR"
+export ETCKEEPER_DIR
+
+if [ -d ".git" ]; then
+	VCS=git
+elif [ -d ".hg" ]; then
+	VCS=hg
+elif [ -d "_darcs" ]; then
+	VCS=darcs
+elif [ -d ".bzr" ]; then
+	VCS=bzr
+fi
+
+if [ -z "$VCS" ]; then
+	echo "Please configure a VCS in $conf" >&2
+	exit 1
+fi
+export VCS
+
+lsscripts() {
+	perl -e '
+		$dir=shift;
+		print join "\n", grep { ! -d $_ && -x $_ }
+			grep /^\Q$dir\/\E[-a-zA-Z0-9]+$/,
+			glob "$dir/*";
+	' "$1"
+}
+
+for script in $(lsscripts "$ETCKEEPER_CONF_DIR/$command.d"); do
+	"$script" "$@"
+done

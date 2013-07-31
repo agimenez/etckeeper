@@ -1,0 +1,17 @@
+#!/bin/sh
+set -e
+
+if [ "$VCS" = git ] && [ ! -e .git ]; then
+	git init
+	echo "$(hostname) /etc repository" > .git/description
+elif [ "$VCS" = hg ] && [ ! -e .hg ]; then
+	hg init
+	echo  "[web]" > .hg/hgrc
+	echo  "description = $(hostname) /etc repository" >> .hg/hgrc
+elif [ "$VCS" = bzr ] && [ ! -e .bzr ]; then
+	bzr init
+	bzr nick "$(hostname) /etc repository"
+elif [ "$VCS" = darcs ] && [ ! -e _darcs ]; then
+	darcs initialize
+	echo "$(hostname) /etc repository" > _darcs/prefs/motd
+fi

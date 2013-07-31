@@ -1,0 +1,72 @@
+.\" -*- nroff -*-
+.TH ETCKEEPER 8 "" "" ""
+.SH NAME
+etckeeper \- store /etc in git, mercurial, bazaar, or darcs
+.SH SYNOPSIS
+.B etckeeper command [-d directory]
+.SH DESCRIPTION
+etckeeper manages /etc be stored in a git, mercurial, bazaar, or darcs
+repository. By default each of the commands operates on /etc, but a
+different directory can be specified to operate on a clone of the /etc
+repository located elsewhere.
+.SH COMMANDS
+.TP
+.B init
+This initialises and sets up a git, mercurial, bazaar, or darcs
+repository (depending on the VCS setting in
+/etc/etckeeper/etckeeper.conf). Typically this is run in /etc once
+when starting to use etckeeper on a machine. It can also be used to
+initialise a clone of the /etc repository located elsewhere.
+.TP
+.B commit [message]
+Commits all changes in /etc to the repository. A commit message can be
+specified. You may also use the underlying VCS to commit manually.
+(Note that etckeeper commit will notice if a user has used sudo or su to
+become root, and record the original username in the commit.)
+.TP
+.B pre-commit
+This is called as a pre-commit hook. It stores metadata and does sanity
+checks.
+.TP
+.B pre-install
+This is called by apt's DPkg::Pre-Install-Pkgs hook, or by equivalent hooks
+of other package managers. It allows committing any uncommitted changes before
+packages are installed, upgraded, etc.
+.TP
+.B post-install
+This is called by apt's DPkg::Post-Invoke hook, or by equivalent hooks
+of other package managers. It commits changes made by packages into the
+repository. (You can also call this by hand after running dpkg by hand.)
+.TP
+.B unclean
+This returns true if the directory contains uncommitted changes.
+.TP
+.B update-ignore [-a]
+This updates the VCS ignore file. Content outside a "managed by etckeeper"
+block is not touched. This is generally run when upgrading to a new version
+of etckeeper. (The -a switch will add a "managed by etckeeper" block if
+one is not present.)
+.TP
+.B vcs subcommand [options ...]
+You can use this to run any subcommand of the VCS that etckeeper is
+configured to run. It will be run in /etc. For example, "etckeeper vcs
+diff" will run "git diff", etc.
+.TP
+.B uninit [-f]
+This command DESTROYS DATA! It is the inverse of the init command, removing
+VCS information and etckeeper's own bookkeeping information from the
+directory. Use with caution. A typical use case would be to run etckeeper
+uninit, then modify etckeeper.conf to use a different VCS, and then run
+etckeeper init. (The -f switch can be used to force uninit without
+prompting.)
+.SH FILES
+/etc/etckeeper/etckeeper.conf is the configuration file.
+
+/etc/etckeeper also contains directories containing the programs that are
+run for each of the above commands.
+.SH ENVIRONMENT VARIABLES
+ETCKEEPER_CONF_DIR path to configuration directory instead of default /etc/etckeeper.
+.SH SEE ALSO
+/usr/share/doc/etckeeper/README.gz
+.SH AUTHOR 
+Joey Hess <joey@kitenet.net>

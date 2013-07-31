@@ -1,0 +1,20 @@
+#!/bin/sh
+set -e
+
+if [ "$1" != "-f" ]; then
+	echo "** Warning: This will DESTROY all recorded history for $ETCKEEPER_DIR,"
+	echo "** including the $VCS repository."
+	echo ""
+	printf "Are you sure you want to do this? [yN] "
+	read answer
+	case "$answer" in 
+		[Yy]*)
+			echo "Proceeding.."
+			exit 0
+		;;
+		*)
+			echo "Aborting etckeeper uninit."
+			exit 1
+		;;
+	esac
+fi

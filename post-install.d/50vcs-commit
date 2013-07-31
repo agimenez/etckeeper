@@ -1,0 +1,23 @@
+#!/bin/sh
+set -e
+		
+pl="/var/cache/etckeeper/packagelist"
+
+if etckeeper unclean; then
+	message="committing changes in /etc after $HIGHLEVEL_PACKAGE_MANAGER run"
+
+	if [ -e $pl.pre-install ]; then
+		(
+			echo "$message"
+			echo
+			echo "Package changes:"
+			etckeeper list-installed | diff -U0 $pl.pre-install - | tail -n+4 | egrep '^[-+]' || true
+		) | etckeeper commit --stdin
+	else
+		etckeeper commit "$(printf "$message")"
+	fi
+fi
+	
+if [ -e $pl.pre-install ]; then
+	rm -f $pl.pre-install
+fi
