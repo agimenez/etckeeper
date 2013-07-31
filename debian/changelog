@@ -1,3 +1,9 @@
+etckeeper (1.7) UNRELEASED; urgency=low
+
+  * Fix hilarious typo hardcoding my name. Closes: #718425
+
+ -- Joey Hess <joeyh@debian.org>  Wed, 31 Jul 2013 11:33:10 -0400
+
 etckeeper (1.6) unstable; urgency=low
 
   * Guard git config calls. Closes: #717957
