@@ -21,19 +21,19 @@ filter_ignore() {
 	esac
 
 	if [ -n "$ignorefile" ] && [ -e "$ignorefile" ]; then
-		patternsfile="$( mktemp -t etckeeper-$VCS.XXXXXXXXXX )"
+		listfile="$( mktemp -t etckeeper-$VCS.XXXXXXXXXX )"
 		case "$VCS" in
 			darcs)
-				grep -v '^[[:space:]]*\(#\|$\)' "$ignorefile" > "$patternsfile" || true
-				grep -Evf "$patternsfile"
+				grep -v '^[[:space:]]*\(#\|$\)' "$ignorefile" > "$listfile" || true
+				grep -Evf "$listfile"
 				;;
 			git)
-				git ls-files --others --ignore --directory > "$patternsfile" || true
-				grep -Fvf "$patternsfile"
+				git ls-files --others --ignore --directory > "$listfile" || true
+				grep -Fvf "$listfile"
 				;;
 		esac
-		rm -f "$patternsfile"
-		unset patternsfile
+		rm -f "$listfile"
+		unset listfile
 	else
 		cat -
 	fi
