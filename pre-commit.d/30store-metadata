@@ -28,7 +28,7 @@ filter_ignore() {
 				grep -Evf "$patternsfile"
 				;;
 			git)
-				git ls-files --others --ignore --directory > "$ignorefile" || true
+				git ls-files --others --ignore --directory > "$patternsfile" || true
 				grep -Fvf "$patternsfile"
 				;;
 		esac
