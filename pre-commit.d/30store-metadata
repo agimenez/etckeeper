@@ -15,14 +15,23 @@ filter_unknown() {
 }
 
 filter_ignore() {
-	if [ "$VCS" = darcs ]; then
-		ignorefile=.darcsignore
-	fi
+	case "$VCS" in
+		darcs) ignorefile=.darcsignore ;;
+		git)   ignorefile=.gitignore ;;
+	esac
 
-	if [ "$VCS" = darcs ] && [ -e "$ignorefile" ]; then
+	if [ -n "$ignorefile" ] && [ -e "$ignorefile" ]; then
 		patternsfile="$( mktemp -t etckeeper-$VCS.XXXXXXXXXX )"
-		grep -v '^[[:space:]]*\(#\|$\)' "$ignorefile" > "$patternsfile" || true
-		grep -Evf "$patternsfile"
+		case "$VCS" in
+			darcs)
+				grep -v '^[[:space:]]*\(#\|$\)' "$ignorefile" > "$patternsfile" || true
+				grep -Evf "$patternsfile"
+				;;
+			git)
+				git ls-files --others --ignore --directory > "$ignorefile" || true
+				grep -Fvf "$patternsfile"
+				;;
+		esac
 		rm -f "$patternsfile"
 		unset patternsfile
 	else
@@ -74,7 +83,7 @@ generate_metadata() {
  
 	# Store things that don't have the default user or group.
 	# Store all file modes, in case the user has an unusual umask.
-	find $NOVCS \( -type f -or -type d \) -print | sort | perl -ne '
+	find $NOVCS \( -type f -or -type d \) -print | filter_ignore | sort | perl -ne '
 		BEGIN { $q=chr(39) }
 		sub uidname {
 			my $want=shift;
