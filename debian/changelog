@@ -1,3 +1,10 @@
+etckeeper (1.8) UNRELEASED; urgency=low
+
+  * Avoid listing .gitignored files in .etckeeper file. Closes: #607665
+    Thanks, Zdenek Crha
+
+ -- Joey Hess <joeyh@debian.org>  Wed, 31 Jul 2013 11:33:45 -0400
+
 etckeeper (1.7) unstable; urgency=low
 
   * Fix hilarious typo hardcoding my name. Closes: #718425
