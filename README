@@ -206,7 +206,7 @@ which will save a lot of disk space:
 Here's how to disable the automatic commits after each apt run, while still
 letting it git add new files:
 
-	chmod -x /etc/etckeeper/commit.d/50vcs-commit
+	rm /etc/etckeeper/commit.d/50vcs-commit
 
 Here's how to make it automatically push commits to a clone of the
 repository as a backup (see instructions above to set up the clone safely):
