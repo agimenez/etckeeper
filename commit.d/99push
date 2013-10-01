@@ -2,6 +2,8 @@
 if [ -n "$PUSH_REMOTE" ]; then
 	if [ "$VCS" = git ] && [ -d .git ]; then
 		git push "$PUSH_REMOTE" master || true
+	elif [ "$VCS" = hg ] && [ -d .hg ]; then
+		hg push "$PUSH_REMOTE" || true
 	else
 		echo "PUSH_REMOTE not yet supported for $VCS" >&2
 	fi
