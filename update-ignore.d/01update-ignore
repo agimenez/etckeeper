@@ -126,7 +126,6 @@ writefile () {
 	ignore network/run
 	ignore adjtime
 	ignore lvm/cache
-	ignore lvm/backup
 	ignore lvm/archive
 	ignore "X11/xdm/authdir/authfiles/*"
 	ignore ntp.conf.dhcp
