@@ -46,24 +46,30 @@ if [ "$VCS" = git ] && [ -d .git ]; then
 		USER_HOME="$(perl -e 'print ((getpwnam(shift()))[7])' "$USER")"
 		if [ -n "$USER_HOME" ] && [ -e "$USER_HOME/.gitconfig" ]; then
 			if [ -z "$GIT_AUTHOR_NAME" ]; then
-				export GIT_AUTHOR_NAME="$(git config -f "$USER_HOME/.gitconfig" user.name)" || true
+				GIT_AUTHOR_NAME="$(git config -f "$USER_HOME/.gitconfig" user.name)" || true
+				export GIT_AUTHOR_NAME
 			fi
 			if [ -z "$GIT_AUTHOR_EMAIL" ]; then
-				export GIT_AUTHOR_EMAIL="$(git config -f "$USER_HOME/.gitconfig" user.email)" || true
+				GIT_AUTHOR_EMAIL="$(git config -f "$USER_HOME/.gitconfig" user.email)" || true
+				export GIT_AUTHOR_EMAIL
 			fi
 		fi
 		if [ -z "$GIT_COMMITTER_EMAIL" ]; then
-			export GIT_COMMITER_EMAIL="$(git config --global user.email)" || true
+			GIT_COMMITER_EMAIL="$(git config --global user.email)" || true
+			export GIT_COMMITER_EMAIL
 		fi
 
 		if [ -z "$GIT_AUTHOR_NAME" ]; then
-			export GIT_AUTHOR_NAME="$USER"
+			GIT_AUTHOR_NAME="$USER"
+			export GIT_AUTHOR_NAME
 		fi
 		if [ -z "$GIT_AUTHOR_EMAIL" ]; then
-			export GIT_AUTHOR_EMAIL="$USER@$hostname"
+			GIT_AUTHOR_EMAIL="$USER@$hostname"
+			export GIT_AUTHOR_EMAIL
 		fi
 		if [ -z "$GIT_COMMITTER_EMAIL" ]; then
-			export GIT_COMMITTER_EMAIL=`whoami`"@$hostname"
+			GIT_COMMITTER_EMAIL=`whoami`"@$hostname"
+			export GIT_COMMITTER_EMAIL
 		fi
 	fi
 	if [ -n "$logfile" ]; then
@@ -73,10 +79,12 @@ if [ "$VCS" = git ] && [ -d .git ]; then
 	fi
 elif [ "$VCS" = hg ] && [ -d .hg ]; then
 	if [ -n "$USER" ]; then
-		export LOGNAME="$USER"
+		LOGNAME="$USER"
+		export LOGNAME
 	fi
 	if [ -z "$HGUSER" ]; then
-		export HGUSER="$USER@$hostname"
+		HGUSER="$USER@$hostname"
+		export HGUSER
 	fi
 	if [ -n "$logfile" ]; then
 		hg commit $HG_COMMIT_OPTIONS -l "$logfile"
@@ -85,7 +93,8 @@ elif [ "$VCS" = hg ] && [ -d .hg ]; then
 	fi
 elif [ "$VCS" = bzr ] && [ -d .bzr ]; then
 	if [ -z "$EMAIL" ] && [ -n "$USER" ]; then
-		export EMAIL="$USER <$USER@$hostname>"
+		EMAIL="$USER <$USER@$hostname>"
+		export EMAIL
 	fi
 	if [ -n "$logfile" ]; then
 		bzr commit $BZR_COMMIT_OPTIONS -F "$logfile"
