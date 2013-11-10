@@ -16,8 +16,12 @@ if [ -e $conf ]; then
 	. $conf
 fi
 
-unset GIT_WORK_TREE
-unset GIT_DIR
+if [ -n "$GIT_WORK_TREE" ]; then
+	unset GIT_WORK_TREE
+fi
+if [ -n "$GIT_DIR" ]; then
+	unset GIT_DIR
+fi
 
 program_directory="${0%/*}"
 if [ -n "$program_directory" ]; then
