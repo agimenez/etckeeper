@@ -1,9 +1,9 @@
-etckeeper (1.11) UNRELEASED; urgency=low
+etckeeper (1.11) unstable; urgency=low
 
   * Fix too broad matching of .gitignored files.
     Closes: #732339
 
- -- Joey Hess <joeyh@debian.org>  Tue, 17 Dec 2013 22:24:08 -0400
+ -- Joey Hess <joeyh@debian.org>  Tue, 17 Dec 2013 22:24:29 -0400
 
 etckeeper (1.10) unstable; urgency=low
 
