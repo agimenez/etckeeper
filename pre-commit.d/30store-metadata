@@ -29,7 +29,7 @@ filter_ignore() {
 				;;
 			git)
 				git ls-files --others --ignore --exclude-standard --directory > "$listfile" || true
-				grep -Fvf "$listfile"
+				grep -xFvf "$listfile"
 				;;
 		esac
 		rm -f "$listfile"
