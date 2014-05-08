@@ -1,9 +1,13 @@
 #!/bin/sh
 if [ -n "$PUSH_REMOTE" ]; then
 	if [ "$VCS" = git ] && [ -d .git ]; then
-		git push "$PUSH_REMOTE" master || true
+		for REMOTE in $PUSH_REMOTE; do
+			git push "$REMOTE" master || true
+		done
 	elif [ "$VCS" = hg ] && [ -d .hg ]; then
-		hg push "$PUSH_REMOTE" || true
+		for REMOTE in $PUSH_REMOTE; do
+			hg push "$REMOTE" || true
+		done
 	else
 		echo "PUSH_REMOTE not yet supported for $VCS" >&2
 	fi
