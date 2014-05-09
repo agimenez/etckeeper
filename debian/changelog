@@ -1,3 +1,9 @@
+etckeeper (1.12) UNRELEASED; urgency=medium
+
+  * Portability fixes. Thanks, Harald Dunkel.
+
+ -- Joey Hess <joeyh@debian.org>  Fri, 09 May 2014 09:23:37 -0300
+
 etckeeper (1.11) unstable; urgency=low
 
   * Fix too broad matching of .gitignored files.
