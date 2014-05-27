@@ -48,7 +48,7 @@ mkdir -p %{_var}/cache/etckeeper
 
 %files
 %defattr(-,root,root,-)
-%doc GPL INSTALL TODO README
+%doc GPL INSTALL TODO README.md
 %{_bindir}/*
 %{_mandir}/*
 # this isn't very clever and its a manual process update.
