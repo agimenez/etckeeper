@@ -3,7 +3,7 @@
 import errno
 import subprocess
 import zypp_plugin
-
+import os
 
 def _call_etckeeper(install_arg):
     # zypper interprets the plugin's stdout as described in
@@ -34,5 +34,6 @@ class EtckeeperPlugin(zypp_plugin.Plugin):
         self.ack()
 
 
+os.environ["LANG"] = "C"
 plugin = EtckeeperPlugin()
 plugin.main()
