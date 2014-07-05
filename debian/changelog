@@ -1,3 +1,10 @@
+etckeeper (1.13) UNRELEASED; urgency=medium
+
+  * Ignore check-mk-agent-logwatch's FHS violating
+    /etc/check_mk/logwatch.state. Closes: #753903
+
+ -- Joey Hess <joeyh@debian.org>  Sat, 05 Jul 2014 19:03:00 -0400
+
 etckeeper (1.12) unstable; urgency=medium
 
   * Portability fixes. Thanks, Harald Dunkel.

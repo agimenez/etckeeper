@@ -145,6 +145,7 @@ writefile () {
 	ignore "cups/subscriptions.conf"
 	ignore "cups/subscriptions.conf.O"
 	ignore "fake-hwclock.data"
+	ignore "check_mk/logwatch.state"
 	nl
 	
 	comment "editor temp files"
