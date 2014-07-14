@@ -181,7 +181,7 @@ if [ -e "$file" ]; then
 	file=$($tempfile)
 	(
 		skipping=
-		while read line; do
+		while read -r line; do
 			if echo "$line" | grep -q "$managed_by_etckeeper"; then
 				if [ ! "$skipping" ]; then
 					skipping=1
