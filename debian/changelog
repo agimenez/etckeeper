@@ -4,6 +4,7 @@ etckeeper (1.13) UNRELEASED; urgency=medium
     /etc/check_mk/logwatch.state. Closes: #753903
   * Only allow [-a-z_] in etckeeper commands to avoid any possible directory
     traversal etc issues.
+  * update-ignore, uninit: Fix parsing of ignore files containing '\'
 
  -- Joey Hess <joeyh@debian.org>  Sat, 05 Jul 2014 19:03:00 -0400
 
