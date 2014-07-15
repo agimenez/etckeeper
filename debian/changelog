@@ -2,6 +2,8 @@ etckeeper (1.13) UNRELEASED; urgency=medium
 
   * Ignore check-mk-agent-logwatch's FHS violating
     /etc/check_mk/logwatch.state. Closes: #753903
+  * Only allow [-a-z_] in etckeeper commands to avoid any possible directory
+    traversal etc issues.
 
  -- Joey Hess <joeyh@debian.org>  Sat, 05 Jul 2014 19:03:00 -0400
 

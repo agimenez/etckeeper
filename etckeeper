@@ -75,6 +75,11 @@ elif [ "$command" = "pre-apt" ]; then
 	command=pre-install
 fi
 
+if echo "$command" | egrep -q '[^-a-z_]'; then
+	echo "etckeeper: invalid command $command" >&2
+	exit 1
+fi
+
 if [ ! -d "$ETCKEEPER_CONF_DIR/$command.d" ]; then
 	echo "etckeeper: $ETCKEEPER_CONF_DIR/$command.d does not exist" >&2
 	exit 1
