@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#
 # 
 # author: jtang@tchpc.tcd.ie
 # 
