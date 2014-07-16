@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#
 # Bazaar plugin that runs etckeeper pre-commit when necessary
 
 """Runs etckeeper pre-commit when necessary."""
