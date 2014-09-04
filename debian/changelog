@@ -1,3 +1,12 @@
+etckeeper (1.14) UNRELEASED; urgency=medium
+
+  * Use debconf for prompting when post-install commit fails, as was
+    already done for pre-install commit. This avoids propigating
+    errors to apt when eg, git is misconfigured and cannot commit.
+    Closes: #760011
+
+ -- Joey Hess <joeyh@debian.org>  Thu, 04 Sep 2014 15:41:39 -0400
+
 etckeeper (1.13) unstable; urgency=medium
 
   * Ignore check-mk-agent-logwatch's FHS violating

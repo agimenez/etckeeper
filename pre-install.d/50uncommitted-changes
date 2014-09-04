@@ -3,6 +3,7 @@ set -e
 
 if [ "$1" = "fail-debconf" ]; then
 	. /usr/share/debconf/confmodule
+	db_title etckeeper
 	db_subst etckeeper/commit_failed VCS "$VCS"
 	db_input critical etckeeper/commit_failed || true
 	db_go || true
