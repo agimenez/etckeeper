@@ -1,4 +1,4 @@
-etckeeper (1.14) UNRELEASED; urgency=medium
+etckeeper (1.14) unstable; urgency=medium
 
   * Handle failure to commit in post-install, pre-install by showing a
     warning, rather than propigating the error to apt.
@@ -8,7 +8,7 @@ etckeeper (1.14) UNRELEASED; urgency=medium
     message, but now debconf is not used, and it always behaves this way.
     Closes: #760011
 
- -- Joey Hess <joeyh@debian.org>  Thu, 04 Sep 2014 15:41:39 -0400
+ -- Joey Hess <joeyh@debian.org>  Thu, 04 Sep 2014 15:47:32 -0400
 
 etckeeper (1.13) unstable; urgency=medium
 
