@@ -126,5 +126,8 @@ lsscripts() {
 }
 
 for script in $(lsscripts "$ETCKEEPER_CONF_DIR/$command.d"); do
-	"$script" "$@"
+	if ! "$script" "$@"; then
+		echo "etckeeper failed running $script" >&1
+		exit 0
+	fi
 done
