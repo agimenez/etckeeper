@@ -1,8 +1,11 @@
 etckeeper (1.14) UNRELEASED; urgency=medium
 
-  * Use debconf for prompting when post-install commit fails, as was
-    already done for pre-install commit. This avoids propigating
-    errors to apt when eg, git is misconfigured and cannot commit.
+  * Handle failure to commit in post-install, pre-install by showing a
+    warning, rather than propigating the error to apt.
+    This avoids breaking the apt run when eg, git is misconfigured and
+    cannot commit.
+    pre-install already did this when it was able to use debconf to display a
+    message, but now debconf is not used, and it always behaves this way.
     Closes: #760011
 
  -- Joey Hess <joeyh@debian.org>  Thu, 04 Sep 2014 15:41:39 -0400

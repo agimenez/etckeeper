@@ -7,14 +7,6 @@
 # Even minor modifications require translation updates and such
 # changes should be coordinated with translators and reviewers.
 
-Template: etckeeper/commit_failed
-Type: error
-_Description: Commit failed
- An attempt to commit /etc changes to ${VCS} failed.
- .
- You may manually resolve the issues with the uncommitted changes
- before continuing.
-
 Template: etckeeper/purge
 Type: boolean
 Default: true

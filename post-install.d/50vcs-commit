@@ -1,16 +1,6 @@
 #!/bin/sh
 set -e
 
-if [ "$1" = "fail-debconf" ]; then
-	. /usr/share/debconf/confmodule
-	db_title etckeeper
-	db_subst etckeeper/commit_failed VCS "$VCS"
-	db_input critical etckeeper/commit_failed || true
-	db_go || true
-	db_reset etckeeper/commit_failed || true
-	exit 0
-fi
-		
 pl="/var/cache/etckeeper/packagelist"
 
 if etckeeper unclean; then
@@ -31,12 +21,7 @@ if etckeeper unclean; then
 	set -e
 
 	if [ "$status" != 0 ]; then
-		if [ -e /usr/share/debconf/confmodule ]; then
-			$0 fail-debconf
-		else
-			echo "error: etckeeper failed to commit changes in /etc using $VCS"
-			exit 1
-		fi
+		echo "warning: etckeeper failed to commit changes in /etc using $VCS" >&2
 	fi
 fi
 	
