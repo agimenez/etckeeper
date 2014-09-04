@@ -126,12 +126,5 @@ lsscripts() {
 }
 
 for script in $(lsscripts "$ETCKEEPER_CONF_DIR/$command.d"); do
-	set +e
 	"$script" "$@"
-	status=$?
-	set -e
-	if [ "$status" != 0 ]; then
-		echo "etckeeper script $script exited $status" >&1
-		exit 0
-	fi
 done
