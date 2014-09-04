@@ -1,10 +1,10 @@
-etckeeper (1.14) UNRELEASED; urgency=medium
+etckeeper (1.14) unstable; urgency=medium
 
   * Avoid propigating nonzero exit status of any command called by etckeeper
     out to the caller. This is to avoid making apt give up because git is
     misconfigured and cannot commit, or similar. Closes: #760011
 
- -- Joey Hess <joeyh@debian.org>  Thu, 04 Sep 2014 13:49:26 -0400
+ -- Joey Hess <joeyh@debian.org>  Thu, 04 Sep 2014 14:04:58 -0400
 
 etckeeper (1.13) unstable; urgency=medium
 
