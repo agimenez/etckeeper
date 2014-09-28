@@ -12,7 +12,7 @@ Package: etckeeper
 Architecture: all
 Section: admin
 Depends: git (>= 1:1.7) | mercurial | bzr (>= 1.5~) | darcs, ${misc:Depends}
-Recommends: cron
+Recommends: cron-daemon
 Suggests: sudo (>= 1.7.4p4)
 Conflicts: bzr (<< 1.5~)
 Description: store /etc in git, mercurial, bzr or darcs

@@ -1,3 +1,10 @@
+etckeeper (1.15) UNRELEASED; urgency=medium
+
+  * Recommend cron-daemon, rather than cron, as etckeeper only needs
+    cron.daily functionality. Closes: #762721
+
+ -- Joey Hess <joeyh@debian.org>  Sun, 28 Sep 2014 11:56:11 -0400
+
 etckeeper (1.14) unstable; urgency=medium
 
   * Handle failure to commit in post-install, pre-install by showing a
