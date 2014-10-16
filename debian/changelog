@@ -1,9 +1,9 @@
-etckeeper (1.15) UNRELEASED; urgency=medium
+etckeeper (1.15) unstable; urgency=medium
 
   * Recommend cron-daemon, rather than cron, as etckeeper only needs
     cron.daily functionality. Closes: #762721
 
- -- Joey Hess <joeyh@debian.org>  Sun, 28 Sep 2014 11:56:11 -0400
+ -- Joey Hess <joeyh@debian.org>  Thu, 16 Oct 2014 12:21:48 -0400
 
 etckeeper (1.14) unstable; urgency=medium
 
