@@ -1,3 +1,10 @@
+etckeeper (1.16) UNRELEASED; urgency=medium
+
+  * Added support for Fedora's DNF highlevel package manager.
+    Thanks, Peter Listiak and Petr Spacek.
+
+ -- Joey Hess <joeyh@debian.org>  Tue, 28 Oct 2014 16:44:00 -0400
+
 etckeeper (1.15) unstable; urgency=medium
 
   * Recommend cron-daemon, rather than cron, as etckeeper only needs
