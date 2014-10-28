@@ -17,6 +17,7 @@ PYTHON=python
 
 build: etckeeper.spec
 	-$(PYTHON) ./etckeeper-bzr/__init__.py build || echo "** bzr support not built"
+	-$(PYTHON) ./etckeeper-dnf/etckeeper.py build || echo "** DNF support not built"
 
 install:
 	mkdir -p $(DESTDIR)$(etcdir)/etckeeper/ $(DESTDIR)$(vardir)/cache/etckeeper/
@@ -43,6 +44,9 @@ ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),yum)
 	$(INSTALL_DATA) yum-etckeeper.py $(DESTDIR)$(prefix)/lib/yum-plugins/etckeeper.py
 	mkdir -p $(DESTDIR)$(etcdir)/yum/pluginconf.d
 	$(INSTALL_DATA) yum-etckeeper.conf $(DESTDIR)$(etcdir)/yum/pluginconf.d/etckeeper.conf
+endif
+ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),dnf)
+	-$(PYTHON) ./etckeeper-dnf/etckeeper.py install --root=$(DESTDIR) ${PYTHON_INSTALL_OPTS} || echo "** DNF support not installed"
 endif
 ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),zypper)
 	mkdir -p $(DESTDIR)$(prefix)/lib/zypp/plugins/commit
