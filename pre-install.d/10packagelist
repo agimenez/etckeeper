@@ -2,3 +2,4 @@
 # This list will be later used when committing.
 mkdir -p /var/cache/etckeeper/
 etckeeper list-installed > /var/cache/etckeeper/packagelist.pre-install
+etckeeper list-installed fmt > /var/cache/etckeeper/packagelist.fmt

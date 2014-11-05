@@ -7,7 +7,7 @@ if etckeeper unclean; then
 	message="committing changes in /etc after $HIGHLEVEL_PACKAGE_MANAGER run"
 
 	set +e
-	if [ -e $pl.pre-install ]; then
+	if [ -e $pl.pre-install ] && [ "$(cat $pl.fmt 2>/dev/null || true)" = "$(etckeeper list-installed fmt)" ]; then
 		(
 			echo "$message"
 			echo
@@ -25,6 +25,4 @@ if etckeeper unclean; then
 	fi
 fi
 	
-if [ -e $pl.pre-install ]; then
-	rm -f $pl.pre-install
-fi
+rm -f $pl.pre-install $pl.fmt
