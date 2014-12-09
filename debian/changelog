@@ -1,3 +1,9 @@
+etckeeper (1.17) UNRELEASED; urgency=medium
+
+  * Fix name of DNF plugin.
+
+ -- Joey Hess <id@joeyh.name>  Tue, 09 Dec 2014 13:02:15 -0400
+
 etckeeper (1.16) unstable; urgency=medium
 
   * Added support for Fedora's DNF highlevel package manager.
