@@ -35,5 +35,5 @@ class Etckeeper(dnf.Plugin):
 if __name__ == "__main__":
     from distutils.core import setup
     setup(name="dnf-etckeeper",
-          packages=["dnf.plugin"],
-          package_dir={"dnf.plugin":"etckeeper-dnf"})
+          packages=["dnf-plugins"],
+          package_dir={"dnf-plugins":"etckeeper-dnf"})
