@@ -64,6 +64,9 @@ if [ -z "$1" ]; then
 elif [ "x$1" = "x-h" ] || [ "x$1" = "x--help" ]; then
 	man etckeeper || echo "Usage: etckeeper command [-d directory]" >&2
 	exit 0
+elif [ "x$1" = "x-v" ] || [ "x$1" = "x--version" ]; then
+        echo "Version: 1.17"
+        exit 0
 fi
 command="$1"
 shift 1
