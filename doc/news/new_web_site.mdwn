@@ -1,0 +1,1 @@
+Finally set up a standalone website for etckeeper..
