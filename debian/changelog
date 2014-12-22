@@ -1,11 +1,11 @@
-etckeeper (1.17) UNRELEASED; urgency=medium
+etckeeper (1.17) unstable; urgency=medium
 
   * Fix name of DNF plugin.
   * Add --version
     Thanks Andreas Wansner.
   * New website, http://etckeeper.branchable.com/
 
- -- Joey Hess <id@joeyh.name>  Tue, 09 Dec 2014 13:02:15 -0400
+ -- Joey Hess <id@joeyh.name>  Mon, 22 Dec 2014 16:42:26 -0400
 
 etckeeper (1.16) unstable; urgency=medium
 
