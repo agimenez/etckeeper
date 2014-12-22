@@ -4,6 +4,7 @@ etckeeper (1.17) unstable; urgency=medium
   * Add --version
     Thanks Andreas Wansner.
   * New website, http://etckeeper.branchable.com/
+  * Add build-depends on dh-python.
 
  -- Joey Hess <id@joeyh.name>  Mon, 22 Dec 2014 16:42:26 -0400
 
