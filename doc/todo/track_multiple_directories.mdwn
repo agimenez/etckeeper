@@ -1,0 +1,7 @@
+Some people would like etckeeper to be able to track multiple directories,
+not just /etc. 
+
+There have been 2 patches proposed:
+
+* <https://github.com/joeyh/etckeeper/pull/2>
+* <https://github.com/joeyh/etckeeper/pull/21>
