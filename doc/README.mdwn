@@ -257,8 +257,10 @@ edit `etckeeper.conf` to change the VCS setting, and finally
 ## inspiration
 
 Two blog posts provided inspiration for techniques used by etckeeper:
-* http://www.jukie.net/~bart/blog/20070312134706
-* http://bryan-murdock.blogspot.com/2007/07/put-etc-under-revision-control-with-git.html
+
+* <http://www.jukie.net/~bart/blog/20070312134706>
+
+* <http://bryan-murdock.blogspot.com/2007/07/put-etc-under-revision-control-with-git.html>
 
 isisetup had some of the same aims as etckeeper, however, unlike it,
 etckeeper does not aim to be a git porcelain with its own set of commands
