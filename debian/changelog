@@ -3,6 +3,7 @@ etckeeper (1.17) UNRELEASED; urgency=medium
   * Fix name of DNF plugin.
   * Add --version
     Thanks Andreas Wansner.
+  * New website, http://etckeeper.branchable.com/
 
  -- Joey Hess <id@joeyh.name>  Tue, 09 Dec 2014 13:02:15 -0400
 
