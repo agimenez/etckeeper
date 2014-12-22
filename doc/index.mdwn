@@ -8,12 +8,9 @@ to use if you understand the basics of working with revision control.
 
 For details, see the [[README]].
 
-## News
-
-[[!inline pages="news/* and !*/Discussion" show="3"]]
-
 [[!sidebar content="""
 [[Install]]  
+[[News]]  
 [[Todo]]  
 
 <a href="http://flattr.com/thing/39940/etckeeper" target="_blank">

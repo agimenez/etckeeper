@@ -1,0 +1,2 @@
+[[!inline pages="news/* and !*/Discussion" show="3"]]
+
