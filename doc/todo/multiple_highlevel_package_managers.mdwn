@@ -3,3 +3,4 @@ The `HIGHLEVEL_PACKAGE_MANAGER` config doesn't allow expressing that.
 
 There's a pull request here, but it needs changes to eg, handle
 etckeeper.spec's tweaking of etckeeper.conf.
+<https://github.com/joeyh/etckeeper/pull/18>
