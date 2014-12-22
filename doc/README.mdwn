@@ -222,6 +222,14 @@ repository as a backup (see instructions above to set up the clone safely):
 	git add .
 	git commit -m "automatically push commits to backup repository"
 
+## sudo integration
+
+etckeeper will notice if it's being run by way of sudo, and makes a commit
+with the author set to the user who sudoed to root. This is useful when
+a system has multiple admins; as long as they use sudo while doing their
+administration, and run `etckeeper commit` to commit their changes,
+`git blame` can show who was responsible for each change.
+
 ## changing VCS
 
 By default, etckeeper uses git. This choice has been carefully made;
