@@ -1,3 +1,5 @@
+<https://etckeeper.branchable.com>
+
 etckeeper is a collection of tools to let /etc be stored in a git,
 mercurial, bazaar or darcs repository. It hooks into apt to automatically
 commit changes made to /etc during package upgrades. It tracks file
