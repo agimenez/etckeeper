@@ -166,9 +166,9 @@ history, merge with it, and so on. It would probably not, however, be wise
 to "git checkout" the other machine's branch! (And if you do, make sure to
 run "etckeeper init" to update file permissions.)
         
-	root@kodama:/etc>git remote add dodo ssh://dodo/etc
-	root@kodama:/etc>git fetch dodo
-	root@kodama:/etc>git diff dodo/master group |head
+	root@darkstar:/etc>git remote add dodo ssh://dodo/etc
+	root@darkstar:/etc>git fetch dodo
+	root@darkstar:/etc>git diff dodo/master group |head
 	diff --git a/group b/group
 	index 0242b84..b5e4384 100644
 	--- a/group
@@ -180,8 +180,8 @@ run "etckeeper init" to update file permissions.)
 	-lp:x:7:cupsys
 	+lp:x:7:
 
-Incidentially, this also means I have a backup of dodo's /etc on kodama.
-So if kodama is compromised, that data could be used to attack dodo
+Incidentially, this also means I have a backup of dodo's /etc on darkstar.
+So if darkstar is compromised, that data could be used to attack dodo
 too. On the other hand, if dodo's disk dies, I can restore it from this
 handy hackup.
 
