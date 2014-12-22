@@ -2,3 +2,10 @@ etckeeper is available in git at `git://git.kitenet.net/etckeeper`, or
 [in gitweb](http://git.kitenet.net/?p=etckeeper.git). 
 
 It's packaged in Debian, Ubuntu, Fedora, etc.
+
+Or, you can install it by hand. Before running 'make install', you
+should edit etckeeper.conf and make sure it configured appropriately
+for your distribution.
+
+Distribution packagers may find it more convenient to set CONFFILE to point
+to a different etckeeper.conf that is preconfigured for your distribution.
