@@ -5,7 +5,7 @@ Summary: store /etc in git, mercurial, bzr or darcs
 
 Group: System Tools
 License: GPLv2
-URL: http://kitenet.net/~joey/code/etckeeper/
+URL: http://etckeeper.branchable.com/
 Source0: http://ftp.debian.org/debian/pool/main/e/etckeeper/%{name}_%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -48,7 +48,7 @@ mkdir -p %{_var}/cache/etckeeper
 
 %files
 %defattr(-,root,root,-)
-%doc GPL INSTALL TODO README.md
+%doc GPL INSTALL README.md
 %{_bindir}/*
 %{_mandir}/*
 # this isn't very clever and its a manual process update.

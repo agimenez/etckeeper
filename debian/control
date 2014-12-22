@@ -6,7 +6,7 @@ Maintainer: Debian QA Group <packages@qa.debian.org>
 Standards-Version: 3.9.4
 XS-Python-Version: all
 Vcs-Git: git://git.kitenet.net/etckeeper
-Homepage: http://kitenet.net/~joey/code/etckeeper/
+Homepage: http://etckeeper.branchable.com/
 
 Package: etckeeper
 Architecture: all

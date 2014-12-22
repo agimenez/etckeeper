@@ -1,0 +1,10 @@
+split the repo
+
+One way to split it would be to put private (non-world-readable) files
+one one repo, and public in another. This would need either symlink
+farming or git "fake bare" repos, both of which are not pleasant, yet.
+
+Another way would be to allow splitting out subdirs into their own repos.
+This is already doable, would just need modifying the pre-install and
+post-instlal stuff (ie, it needs to commit in the subdirs too). Using mr
+would be a possibility..

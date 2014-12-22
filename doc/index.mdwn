@@ -7,15 +7,16 @@ such as the permissions of `/etc/shadow`. It's quite modular and
 configurable, while also being simple to use if you understand the basics
 of working with revision control.
 
-etckeeper is available in git at `git://git.kitenet.net/etckeeper`, or
-[in gitweb](http://git.kitenet.net/?p=etckeeper.git). It's packaged in
-Debian, Ubuntu, Fedora, etc.
+For details, see the [[README]].
 
 ## News
 
 [[!inline pages="news/* and !*/Discussion" show="3"]]
 
 [[!sidebar content="""
+[[Install]]  
+[[Todo]]  
+
 <a href="http://flattr.com/thing/39940/etckeeper" target="_blank">
 <img src="http://api.flattr.com/button/button-static-50x60.png" alt="Flattr this" title="Flattr this" border="0" /></a>
 """]]
