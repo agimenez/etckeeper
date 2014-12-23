@@ -1,10 +1,8 @@
 [[!inline raw=yes pages="README"]]
 
 [[!sidebar content="""
-[[Install]]  
-[[News]]  
-[[Todo]]  
-
-<a href="http://flattr.com/thing/39940/etckeeper" target="_blank">
-<img src="http://api.flattr.com/button/button-static-50x60.png" alt="Flattr this" title="Flattr this" border="0" /></a>
+* [[install]]  
+* [[news]]  
+* [[todo]]  
+* [Flattr this](http://flattr.com/thing/39940/etckeeper)
 """]]
