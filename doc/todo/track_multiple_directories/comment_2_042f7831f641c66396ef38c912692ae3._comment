@@ -1,0 +1,21 @@
+[[!comment format=mdwn
+ username="https://www.google.com/accounts/o8/id?id=AItOawlCXirWXlbn1_Ma9G5w3KYILEmb75-I9Do"
+ nickname="Salve J."
+ subject="track multiple directories = good"
+ date="2014-12-23T05:26:22Z"
+ content="""
+Allright, here's my use case.
+
+I have some applications i develop, where others now and then update its configurations. These applications may be installed using the packaging system in use on that machine (we make RPM and DEB packages), and that the accompaning \"configuration files\" might include templates, customer configuration files, documentation, and lots of other things that are deemed safe by $bosses to be \"safe for editing\". Some of these files are in /etc, most are not. The important thing is that they are regular text files.I'
+
+I also have some other regular services that have all their important/useful files outside /etc (e.g. our BIND installation, which has their zone files deep in some directory in /usr/local/etc somewhere). I'd like to track changes in those files too, with the useful features etckeeper do so well.
+
+For me, the important thing is to make sure that when someone does something stupid (as people sometimes do, myself included), that we have an easy undo facility to rely on. I think etckeeper would fit this role nicely, because etckeeper helps checking for uncommitted files in lots of useful situations, and does the committing if some of us happen to forget to do it. This means we get to have an \"undo button\" that actually WORKS (since stuff is actually committed!). I like that.
+
+Now, how would this actually be managed by etckeeper? No idea, but I'm happy to help and have a conversation around this. Maybe the best way is to allow for several etckeeper \"instances\" to run independently. Maybe it's a simple feature for defining a list of directories to check...
+
+Hope this gives you an idea of what I tried to do with my pull request at https://github.com/joeyh/etckeeper/pull/2
+
+-- Salve
+
+"""]]
