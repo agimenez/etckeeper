@@ -1,8 +1,8 @@
 [[!inline raw=yes pages="README"]]
 
 [[!sidebar content="""
-* [[install]]  
-* [[news]]  
-* [[todo]]  
-* [Flattr this](http://flattr.com/thing/39940/etckeeper)
+[[install]]  
+[[news]]  
+[[todo]]  
+[Flattr this](http://flattr.com/thing/39940/etckeeper)  
 """]]
