@@ -1,0 +1,7 @@
+[[!comment format=mdwn
+ username="http://joeyh.name/"
+ subject="comment 3"
+ date="2014-12-23T18:30:15Z"
+ content="""
+It seems to me that it's easy to build a system where all configuration is in /etc. Or, it might make sense to use <http://myrepos.branchable.com/> to manage the non-/etc repositories. 
+"""]]
