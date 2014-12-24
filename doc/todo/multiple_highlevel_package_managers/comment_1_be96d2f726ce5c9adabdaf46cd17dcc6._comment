@@ -1,0 +1,17 @@
+[[!comment format=mdwn
+ username="https://www.google.com/accounts/o8/id?id=AItOawkZ9t02dAh3YsUhVRJ9uBE4xUt_ZUrDs8s"
+ nickname="さんご"
+ subject="How should we send you new patches?"
+ date="2014-12-24T00:37:10Z"
+ content="""
+I will rewrite the patch of supporting multi highlevel-package-manager.
+
+But, how should we send you new patches?
+
+a) pullrequest on GitHub.
+
+b) the others(????????)
+
+Please tell us.
+
+"""]]
