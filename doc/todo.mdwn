@@ -1,4 +1,5 @@
-This is etckeeper's todo list. Link items to [[todo/done]] when done.
+This is etckeeper's todo list, for both posting feature requests, and merge
+requests. Link items to [[todo/done]] when done.
 
 See also: [Debian BTS](http://bugs.debian.org/etckeeper).
 
