@@ -1,0 +1,12 @@
+[[!comment format=mdwn
+ username="https://www.google.com/accounts/o8/id?id=AItOawlCXirWXlbn1_Ma9G5w3KYILEmb75-I9Do"
+ nickname="Salve J."
+ subject="On putting everything in /etc"
+ date="2014-12-30T15:38:19Z"
+ content="""
+Yes, it's *easy* to put everything in /etc. But sometimes it's also *wrong* to do so (eg. for templates, some application-specific config, app localization files, etc.). And sometimes it's not *possible* to do so (eg. for 3rd party applications where we need to keep track of changes). Sometimes I (the dev/admin) have full control of the workflow, other times I don't. There's a LOT of crazy stuff out there (not all in /etc), and having something like etckeeper help keep track of changes would make life a lot easier for people.
+
+But perhaps more importantly, there are people out there (myself included) who would love to use etckeeper in this way, but who would prefer this feature was committed to \"upstream\" (your git repo) instead of having to manage a fork of the project in order to get things done.
+
+I hope you understand.
+"""]]
