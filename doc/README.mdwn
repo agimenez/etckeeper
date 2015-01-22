@@ -86,6 +86,10 @@ A quick walkthrough of using etckeeper.
 Note that the default VCS is git, and this tutorial assumes you're using
 it. Using other VCSes should be broadly similar. 
 
+First, get etckeeper installed. Something like:
+
+	apt-get install etckeeper
+
 The `etckeeper init` command initialises an /etc/.git/ repository. 
 If you installed etckeeper from a package, this was probably automatically
 performed during the package installation. If not, your first step is to
