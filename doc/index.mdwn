@@ -1,3 +1,7 @@
+<html>
+<video controls width=400 title="introduction to etckeeper by Francois Marier" src="https://downloads.kitenet.net/videos/etckeeper.ogv"></video>
+</html>
+
 [[!inline raw=yes pages="README"]]
 
 [[!sidebar content="""
