@@ -1,10 +1,22 @@
+etckeeper is a collection of tools to let `/etc` be stored in a git,
+mercurial, bazaar or darcs repository. This lets you use git to review or
+revert changes that were made to `/etc`. Or even push the repository
+elsewhere for backups or cherry-picking configuration changes.
+
+It hooks into package managers like apt to automatically commit changes
+made to /etc during package upgrades. It tracks file metadata that git does
+not normally support, but that is important for /etc, such as the
+permissions of `/etc/shadow`.
+
+It's quite modular and configurable, while also being simple to use if you
+understand the basics of working with version control.
+
 <html>
 <video controls width=400 title="introduction to etckeeper by Francois Marier" src="https://downloads.kitenet.net/videos/etckeeper.ogv"></video>
 </html>
 
-[[!inline raw=yes pages="README"]]
-
 [[!sidebar content="""
+[[README]]
 [[install]]  
 [[news]]  
 [[todo]]  
