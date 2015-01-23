@@ -16,7 +16,7 @@ understand the basics of working with version control.
 </html>
 
 [[!sidebar content="""
-[[README]]
+[[README]]  
 [[install]]  
 [[news]]  
 [[todo]]  
