@@ -1,0 +1,5 @@
+What will and what could be done if there is a Git repo somewhere underneath /etc?
+
+Perhaps, it could be stored verbatim, or as a submodule.
+
+Simply ignoring it would definitely loose information from the backup.
