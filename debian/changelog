@@ -1,3 +1,10 @@
+etckeeper (1.18) UNRELEASED; urgency=medium
+
+  * Send yum pre-commit output to /dev/null
+    Thanks, Andrew Colin Kissa
+
+ -- Joey Hess <id@joeyh.name>  Tue, 17 Feb 2015 20:56:01 -0400
+
 etckeeper (1.17) unstable; urgency=medium
 
   * Fix name of DNF plugin.
