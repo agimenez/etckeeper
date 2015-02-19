@@ -1,0 +1,76 @@
+Hi, I wrote emails and a bugreport for this issue but never got an answer...
+
+Currently eetckeeper does ignore the .hgignore file. My workflow is like this:
+I have a hgignore to ignore everything and adding files explicitly. There are also exceptions from that where I want to track for new files:
+
+Ignoring everyhing would be:
+    
+    syntax: glob
+    **
+
+With exceptions:
+
+    syntax: regexp
+
+    # Ignore anything in root folder but include .hgignore and special folders:
+    #^(?!.hgignore|data|DATA|NFS|usr(/local(/lib(/site_perl|$)|$)|$)|etc(/init.d(/*.sh$|$)|$))
+    # OR
+    ^(?!boot(/config|$)|etc(/runlevels|$))
+
+The long time problem is that etckeeper tries to scan the whole repo root which is / here because I also track some items in /usr/local or /root. Those find on / take far too long and never come back.
+
+Therefore I dropped pre-commit.d/20warn-problem-files completely since I know which files I added explicitly. I also dropped the search for empty directories because I only add specific files.
+As for 30store-metadata I added hg status -nacu for getting all relevant files:
+
+[[!format  bash """
+--- /root/src/etckeeper/pre-commit.d/30store-metadata	2015-02-19 13:13:46.171485949 +0100
++++ pre-commit.d/30store-metadata	2015-02-19 13:28:01.593456235 +0100
+@@ -59,7 +59,10 @@ generate_metadata() {
+ 	# (Note that when using this, the find expression must end with 
+ 	# -print or -exec, else the excluded directories will actually be
+ 	# printed!)
+-	NOVCS='. -path ./.git -prune -o -path ./.bzr -prune -o -path ./.hg -prune -o -path ./_darcs -prune -o'
++	if [ "$VCS" = hg ]; then
++            HG_FILES="$(hg status -nacu)"
++        fi
++	NOVCS="${HG_FILES:-.} -path ./.git -prune -o -path ./.bzr -prune -o -path ./.hg -prune -o -path ./_darcs -prune -o"
+ 
+ 	# Keep the sort order the same at all times.
+ 	LC_COLLATE=C
+@@ -68,8 +71,9 @@ generate_metadata() {
+ 	if [ "$VCS" = git ] || [ "$VCS" = hg ]; then
+ 		# These version control systems do not track directories,
+ 		# so empty directories must be stored specially.
+-		find $NOVCS -type d -empty -print |
+-			sort | shellquote | sed -e "s/^/mkdir -p /"
++#		find ${HG_FILES:- } $NOVCS -type d -empty -print |
++#			sort | shellquote | sed -e "s/^/mkdir -p /"
++                true
+ 	fi
+ 
+ 	if [ "$VCS" = darcs ]; then
+@@ -110,12 +114,12 @@ generate_metadata() {
+ 		s/^/$q/;
+ 		s/$/$q/;
+ 		if ($uid != $>) {
+-			printf "maybe chown $q%s$q %s\n", uidname($uid), $_;
++			printf "maybe chown -c $q%s$q %s\n", uidname($uid), $_;
+ 		}
+ 		if ($gid != $)) {
+-			printf "maybe chgrp $q%s$q %s\n", gidname($gid), $_;
++			printf "maybe chgrp -c $q%s$q %s\n", gidname($gid), $_;
+ 		}
+-		printf "maybe chmod %04o %s\n", $mode & 07777, $_;
++		printf "maybe chmod -c %04o %s\n", $mode & 07777, $_;
+ 	'
+"""]]
+
+Thanks for the new website beside the very basic debian bugtracker. Please provide a bug tracker or ticket system. Please provide also simple tar-balls with the release-versions beside git-tags, that can be used by other package managers and distributions.
+
+Since some distros are already considered please integrate the Gentoo package manager so we can drop our patches:
+
+<http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/sys-apps/etckeeper/files/etckeeper-1.15-gentoo.patch>
+
+
+Best regards,
+Massimo
