@@ -64,3 +64,13 @@ As for 30store-metadata I added hg status -nacu for getting all relevant files:
 +		printf "maybe chmod -c %04o %s\n", $mode & 07777, $_;
  	'
 """]]
+
+Thanks for the new website beside the very basic debian bugtracker. Please provide a bug tracker or ticket system. Please provide also simple tar-balls with the release-versions beside git-tags, that can be used by other package managers and distributions.
+
+Since some distros are already considered please integrate the Gentoo package manager so we can drop our patches:
+
+<http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/sys-apps/etckeeper/files/etckeeper-1.15-gentoo.patch>
+
+
+Best regards,
+Massimo
