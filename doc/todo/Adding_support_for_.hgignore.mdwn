@@ -163,5 +163,14 @@ I only did the hg source part. Using bash arrays could be better, I tried to sta
  	# We don't handle xattrs.
 """]]
 
+I added an init hook for any update, so after cloning to a new location and updating, all permissions are going to be fixed:
+[hooks]
+
+[[!format python """
+# pre-commit hook for etckeeper, to store metadata and do sanity checks
+pre-commit	= etckeeper pre-commit -d "$(hg root)"
+post-update	= etckeeper init "$(hg root)"
+"""]]
+
 Best regards,
 Massimo
