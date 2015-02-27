@@ -71,6 +71,106 @@ Since some distros are already considered please integrate the Gentoo package ma
 
 <http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/sys-apps/etckeeper/files/etckeeper-1.15-gentoo.patch>
 
+# There is something missing if only recording uid/gid/mode for tracked files...
+All dirnames of every file must also get the right permissions.
+
+I only did the hg source part. Using bash arrays could be better, I tried to stay sh compatible. This is a quick hack, not completely tested...
+
+[[!format  bash """
+# diff -uNr /root/src/etckeeper/pre-commit.d/30store-metadata /etc/etckeeper/pre-commit.d/30store-metadata 
+--- /root/src/etckeeper/pre-commit.d/30store-metadata	2015-02-20 15:36:24.912374338 +0100
++++ /etc/etckeeper/pre-commit.d/30store-metadata	2015-02-20 15:34:10.770378997 +0100
+@@ -44,6 +44,21 @@
+ 	sed -e "s/'/'\"'\"'/g" -e "s/^/'/" -e "s/$/'/"
+ }
+ 
++getdirname() {
++    # Permissions of all parent dirnames must also be recorded
++    local p
++    # Print the file itself
++    printf '%s' "$p"
++    p=${1%/*}
++    #  Print the files dirnames
++    while [[ $p = */* ]]; do
++        printf ' %s' "$p"
++        p=${p%/*}
++    done
++    #  Print the parent dirname
++    printf ' %s' "$p"
++}
++
+ generate_metadata() {
+ 	# This function generates the script commands to fix any file
+ 	# ownerships that aren't owner=root, group=root, as well as to 
+@@ -57,9 +72,17 @@
+ 	# but we want find to ignore the VCS files themselves.
+ 	# 
+ 	# (Note that when using this, the find expression must end with 
+-	# -print or -exec, else the excluded directories will actually be
+-	# printed!)
+-	NOVCS='. -path ./.git -prune -o -path ./.bzr -prune -o -path ./.hg -prune -o -path ./_darcs -prune -o'
++        # -print or -exec, else the excluded directories will actually be
++        # printed!)
++        if [ "$VCS" = hg ]; then
++            HG_FILES="$(hg status -nacu)"
++            HG_FILES_DIRS=""
++            for file in $HG_FILES; do
++                HG_FILES_DIRS+=" $(getdirname $file)"
++            done
++
++        fi
++	NOVCS="${ALL_FILES:-.} -path ./.git -prune -o -path ./.bzr -prune -o -path ./.hg -prune -o -path ./_darcs -prune -o"
+ 
+ 	# Keep the sort order the same at all times.
+ 	LC_COLLATE=C
+@@ -68,8 +91,9 @@
+ 	if [ "$VCS" = git ] || [ "$VCS" = hg ]; then
+ 		# These version control systems do not track directories,
+ 		# so empty directories must be stored specially.
+-		find $NOVCS -type d -empty -print |
+-			sort | shellquote | sed -e "s/^/mkdir -p /"
++#		find ${ALL_FILES:- } $NOVCS -type d -empty -print |
++#			sort | shellquote | sed -e "s/^/mkdir -p /"
++                true
+ 	fi
+ 
+ 	if [ "$VCS" = darcs ]; then
+@@ -83,7 +107,8 @@
+  
+ 	# Store things that don't have the default user or group.
+ 	# Store all file modes, in case the user has an unusual umask.
+-	find $NOVCS \( -type f -or -type d \) -print | filter_ignore | sort | perl -ne '
++	#find $NOVCS \( -type f -or -type d \) -print | filter_ignore | sort | perl -ne '
++	echo $HG_FILES_DIRS | tr " " "\n" | sort -u | perl -ne '
+ 		BEGIN { $q=chr(39) }
+ 		sub uidname {
+ 			my $want=shift;
+@@ -110,12 +135,12 @@
+ 		s/^/$q/;
+ 		s/$/$q/;
+ 		if ($uid != $>) {
+-			printf "maybe chown $q%s$q %s\n", uidname($uid), $_;
++			printf "maybe chown -c $q%s$q %s\n", uidname($uid), $_;
+ 		}
+ 		if ($gid != $)) {
+-			printf "maybe chgrp $q%s$q %s\n", gidname($gid), $_;
++			printf "maybe chgrp -c $q%s$q %s\n", gidname($gid), $_;
+ 		}
+-		printf "maybe chmod %04o %s\n", $mode & 07777, $_;
++		printf "maybe chmod -c %04o %s\n", $mode & 07777, $_;
+ 	'
+ 
+ 	# We don't handle xattrs.
+"""]]
+
+I added an init hook for any update, so after cloning to a new location and updating, all permissions are going to be fixed:
+[hooks]
+
+[[!format python """
+# pre-commit hook for etckeeper, to store metadata and do sanity checks
+pre-commit	= etckeeper pre-commit -d "$(hg root)"
+post-update	= etckeeper init "$(hg root)"
+"""]]
 
 Best regards,
 Massimo
