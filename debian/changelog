@@ -1,3 +1,12 @@
+etckeeper (1.18.1) unstable; urgency=medium
+
+  * Add myself as maintainer (Closes: #768516)
+  * Keeping the package native as I do not intend to diverge from
+    upstream.
+  * Update git URL in control file.
+
+ -- Antoine Beaupré <anarcat@debian.org>  Sat, 21 Mar 2015 18:30:07 -0400
+
 etckeeper (1.18) unstable; urgency=medium
 
   * Send yum pre-commit output to /dev/null
