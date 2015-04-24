@@ -17,5 +17,7 @@ else
 		rpm -qa --qf "%|epoch?{%{epoch}}:{0}|:%{name}-%{version}-%{release}.%{arch}\n" | sort
 	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = pacman ]; then
 		pacman -Q
+	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = pkgng ]; then
+		pkg info -E "*"
 	fi
 fi
