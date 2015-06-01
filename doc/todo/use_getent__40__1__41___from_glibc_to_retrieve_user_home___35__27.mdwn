@@ -1,0 +1,6 @@
+use getent(1) from glibc to retrieve user home #27
+
+https://github.com/joeyh/etckeeper/pull/27
+
+url for git am:
+https://patch-diff.githubusercontent.com/raw/joeyh/etckeeper/pull/27.patch
