@@ -1,3 +1,9 @@
+etckeeper (1.18.2) UNRELEASED; urgency=medium
+
+  * Use getent utility instead of perl. (Elan Ruusamäe)
+
+ -- Joey Hess <id@joeyh.name>  Mon, 01 Jun 2015 09:15:34 -0400
+
 etckeeper (1.18.1) unstable; urgency=medium
 
   * Add myself as maintainer (Closes: #768516)
