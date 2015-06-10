@@ -1,0 +1,4 @@
+In order to run etckeeper on e.g. embedded systems which does not have perl, I've removed the last parts using perl.
+I have run this on my custom system and it works as expected for me.
+
+Link to github commit: <https://github.com/radhus/etckeeper/commit/d05837ed617bac0163a158ba1cfeca68994bc8f3>
