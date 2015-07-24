@@ -4,3 +4,6 @@ export PYTHON_INSTALL_OPTS=--install-layout=deb
 
 %:
 	dh --with python2 $@
+
+override_dh_installdocs:
+	dh_installdocs -X.gitignore

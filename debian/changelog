@@ -2,6 +2,8 @@ etckeeper (1.18.2) UNRELEASED; urgency=medium
 
   * Use getent utility instead of perl. (Elan Ruusamäe)
   * Initial FreeBSD support with pkgng plugin. (William Johansson)
+  * Fix README.md symlink in package (Sebastian Schmidt, Antoine Beaupré,
+    closes: #791566)
 
  -- Joey Hess <id@joeyh.name>  Mon, 01 Jun 2015 09:15:34 -0400
 
