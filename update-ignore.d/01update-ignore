@@ -93,7 +93,7 @@ writefile () {
 		comment "new and old versions of conffiles, stored by apt/rpm"
 		ignore "*.rpm*"
 		nl
-	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = "pacman-g2" -o "$LOWLEVEL_PACKAGE_MANAGER" = "pacman" ]; then
+	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = "pacman-g2" -o "$LOWLEVEL_PACKAGE_MANAGER" = "pacman" -o "$LOWLEVEL_PACKAGE_MANAGER" = "pacmatic" ]; then
 		comment "new and old versions of conffiles, stored by pacman"
 		ignore "*.pacnew"
 		ignore "*.pacorig"
