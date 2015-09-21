@@ -1,3 +1,9 @@
+etckeeper (1.18.3) UNRELEASED; urgency=medium
+
+  * Added support for pacmatic, contributed by nicolaichuk.
+
+ -- Joey Hess <id@joeyh.name>  Mon, 21 Sep 2015 16:38:03 -0400
+
 etckeeper (1.18.2) unstable; urgency=medium
 
   * Use getent utility instead of perl. (Elan Ruusamäe)
