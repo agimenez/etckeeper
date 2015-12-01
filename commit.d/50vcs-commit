@@ -97,7 +97,7 @@ elif [ "$VCS" = bzr ] && [ -d .bzr ]; then
 		EMAIL="$USER <$USER@$hostname>"
 		export EMAIL
 	else
-		bzr whoami || export EMAIL="$ORIG_USER <$ORIG_USER@$hostname>"
+		bzr whoami >/dev/null 2>&1 || export EMAIL="$ORIG_USER <$ORIG_USER@$hostname>"
 	fi
 	if [ -n "$logfile" ]; then
 		bzr commit $BZR_COMMIT_OPTIONS -F "$logfile"
