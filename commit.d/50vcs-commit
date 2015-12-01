@@ -28,6 +28,7 @@ if [ -n "$dnsdomainname" ]; then
 	hostname="$hostname.$dnsdomainname"
 fi
 
+ORIG_USER=$USER
 USER=
 if [ -n "$SUDO_USER" ]; then
 	USER="$SUDO_USER"
@@ -95,6 +96,8 @@ elif [ "$VCS" = bzr ] && [ -d .bzr ]; then
 	if [ -z "$EMAIL" ] && [ -n "$USER" ]; then
 		EMAIL="$USER <$USER@$hostname>"
 		export EMAIL
+	else
+		bzr whoami || export EMAIL="$ORIG_USER <$ORIG_USER@$hostname>"
 	fi
 	if [ -n "$logfile" ]; then
 		bzr commit $BZR_COMMIT_OPTIONS -F "$logfile"
