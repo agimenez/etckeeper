@@ -59,11 +59,11 @@ clean: etckeeper.spec etckeeper.version
 	rm -rf build
 
 etckeeper.spec:
-	sed -i~ "s/Version:.*/Version: $$(perl -e '$$_=<>;print m/\((.*?)\)/'<debian/changelog)/" etckeeper.spec
+	sed -i~ "s/Version:.*/Version: $$(perl -e '$$_=<>;m/\((.*?)(-.*)?\)/;print $$1;'<debian/changelog)/" etckeeper.spec
 	rm -f etckeeper.spec~
 
 etckeeper.version:
-	sed -i~ "s/Version:.*/Version: $$(perl -e '$$_=<>;print m/\((.*?)\)/'<debian/changelog)\"/" etckeeper
+	sed -i~ "s/Version:.*/Version: $$(perl -e '$$_=<>;m/\((.*?)(-.*)?\)/;print $$1;' <debian/changelog)\"/" etckeeper
 	rm -f etckeeper~
 
 .PHONY: etckeeper.spec etckeeper.version

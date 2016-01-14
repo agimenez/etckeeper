@@ -3,6 +3,8 @@ etckeeper (1.18.3) UNRELEASED; urgency=medium
   * Added support for pacmatic, contributed by nicolaichuk.
   * bzr: make sure EMAIL is defined
     Thanks, Serge E. Hallyn
+  * Fix Makefile version patterns to ignore non-native version number
+    (Antoine Beaupré)
 
  -- Joey Hess <id@joeyh.name>  Mon, 21 Sep 2015 16:38:03 -0400
 
