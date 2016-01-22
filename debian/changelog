@@ -5,6 +5,8 @@ etckeeper (1.18.3) UNRELEASED; urgency=medium
     Thanks, Serge E. Hallyn
   * Fix Makefile version patterns to ignore non-native version number
     (Antoine Beaupré)
+  * Support ~/.config/git/config when determining the author name and email.
+    Thanks, Richard Savio
 
  -- Joey Hess <id@joeyh.name>  Mon, 21 Sep 2015 16:38:03 -0400
 
