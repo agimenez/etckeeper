@@ -4,4 +4,5 @@ Basic working plugin available at: <https://github.com/radhus/etckeeper/commit/f
 
 > I've merged this. Of course it would be good to get the main Makefile
 > able to install it. Please open new todos if you have updates and thanks!
+> [[done]]
 > --[[Joey]]
