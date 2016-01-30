@@ -8,7 +8,7 @@ Type = Package
 Target = *
 
 [Action]
-Description = etckeeper pre-install hook
+Description = etckeeper: pre-transaction commit
 When = PreTransaction
 Exec = /usr/bin/etckeeper pre-install
 Depends = etckeeper

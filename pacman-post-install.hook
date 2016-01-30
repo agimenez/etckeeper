@@ -8,7 +8,7 @@ Type = Package
 Target = *
 
 [Action]
-Description = etckeeper post-install hook
+Description = etckeeper: post-transaction commit
 When = PostTransaction
 Exec = /usr/bin/etckeeper post-install
 Depends = etckeeper
