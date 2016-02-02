@@ -7,6 +7,8 @@ etckeeper (1.18.3) UNRELEASED; urgency=medium
     (Antoine Beaupré)
   * Support ~/.config/git/config when determining the author name and email.
     Thanks, Richard Savio
+  * Added support for Arch's pacman package manager version 5.
+    Thanks, Tilman Blumenbach.
 
  -- Joey Hess <id@joeyh.name>  Mon, 21 Sep 2015 16:38:03 -0400
 
