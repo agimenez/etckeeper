@@ -1,4 +1,4 @@
-etckeeper (1.18.3) UNRELEASED; urgency=medium
+etckeeper (1.18.3) unstable; urgency=medium
 
   * Added support for pacmatic, contributed by nicolaichuk.
   * bzr: make sure EMAIL is defined
@@ -9,9 +9,11 @@ etckeeper (1.18.3) UNRELEASED; urgency=medium
     Thanks, Richard Savio
   * Added support for Arch's pacman package manager version 5.
     Thanks, Tilman Blumenbach.
-  * Set HOME if it's not set, as is the case when using ubuntu's update-manager.
+  * Set HOME if it's not set, as is the case when using ubuntu's
+    update-manager.
+  * Move bash completion out of etc and into usr.
 
- -- Joey Hess <id@joeyh.name>  Mon, 21 Sep 2015 16:38:03 -0400
+ -- Joey Hess <id@joeyh.name>  Mon, 15 Feb 2016 13:11:20 -0400
 
 etckeeper (1.18.2) unstable; urgency=medium
 
