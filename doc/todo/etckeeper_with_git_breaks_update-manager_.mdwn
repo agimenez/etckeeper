@@ -28,3 +28,5 @@ But when the update-manger install new packet versions it ends with an "installa
     SourcePackage: etckeeper
     UpgradeStatus: No upgrade log present (probably fresh install)
     mtime.conffile..etc.etckeeper.etckeeper.conf: 2014-03-30T16:33:03.109833
+
+> [[done]] --[[Joey]]

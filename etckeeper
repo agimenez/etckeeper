@@ -59,6 +59,11 @@ if [ ! -z "$PUSH_REMOTE" ]; then
 	export PUSH_REMOTE
 fi
 
+if [ -z "$HOME" ]; then
+	HOME=~root
+	export HOME
+fi
+
 if [ -z "$1" ]; then
 	usage
 elif [ "x$1" = "x-h" ] || [ "x$1" = "x--help" ]; then

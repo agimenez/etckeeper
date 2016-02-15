@@ -9,6 +9,7 @@ etckeeper (1.18.3) UNRELEASED; urgency=medium
     Thanks, Richard Savio
   * Added support for Arch's pacman package manager version 5.
     Thanks, Tilman Blumenbach.
+  * Set HOME if it's not set, as is the case when using ubuntu's update-manager.
 
  -- Joey Hess <id@joeyh.name>  Mon, 21 Sep 2015 16:38:03 -0400
 
