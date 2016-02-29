@@ -1,3 +1,10 @@
+etckeeper (1.18.4) UNRELEASED; urgency=medium
+
+  * Optimised find for special and hard linked files.
+    Thanks, Rike-Benjamin Schuppner.
+
+ -- Joey Hess <id@joeyh.name>  Mon, 29 Feb 2016 11:12:08 -0400
+
 etckeeper (1.18.3) unstable; urgency=medium
 
   * Added support for pacmatic, contributed by nicolaichuk.
