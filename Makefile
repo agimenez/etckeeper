@@ -38,8 +38,8 @@ ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),apt)
 endif
 ifeq ($(LOWLEVEL_PACKAGE_MANAGER),pacman)
 	mkdir -p $(DESTDIR)$(prefix)/share/libalpm/hooks
-	$(INSTALL_DATA) ./pacman-pre-install.hook $(DESTDIR)$(prefix)/share/libalpm/hooks/etckeeper-pre-install.hook
-	$(INSTALL_DATA) ./pacman-post-install.hook $(DESTDIR)$(prefix)/share/libalpm/hooks/etckeeper-post-install.hook
+	$(INSTALL_DATA) ./pacman-pre-install.hook $(DESTDIR)$(prefix)/share/libalpm/hooks/95-etckeeper-pre-install.hook
+	$(INSTALL_DATA) ./pacman-post-install.hook $(DESTDIR)$(prefix)/share/libalpm/hooks/95-etckeeper-post-install.hook
 endif
 ifeq ($(LOWLEVEL_PACKAGE_MANAGER),pacman-g2)
 	mkdir -p $(DESTDIR)$(etcdir)/pacman-g2/hooks
