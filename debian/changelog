@@ -2,6 +2,8 @@ etckeeper (1.18.4) UNRELEASED; urgency=medium
 
   * Optimised find for special and hard linked files.
     Thanks, Rike-Benjamin Schuppner.
+  * Make Pacman 5 call etckeeper hooks as late as possible.
+    Thanks, Tilman Blumenbach.
 
  -- Joey Hess <id@joeyh.name>  Mon, 29 Feb 2016 11:12:08 -0400
 
