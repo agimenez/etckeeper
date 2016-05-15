@@ -4,8 +4,8 @@
 Operation = Install
 Operation = Upgrade
 Operation = Remove
-Type = Package
-Target = *
+Type = File
+Target = /etc/*
 
 [Action]
 Description = etckeeper: post-transaction commit
