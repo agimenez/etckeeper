@@ -6,6 +6,9 @@ etckeeper (1.18.4) UNRELEASED; urgency=medium
     Thanks, Tilman Blumenbach and Christian Hesse.
   * Only run Pacman hooks when files in /etc have changed.
     Thanks, Christian Hesse.
+  * Added systemd timer that can run etckeeper 10 minutes after boot, and also
+    daily. It's not enabled by default, partly because of overlap with the
+    cron job.
 
  -- Joey Hess <id@joeyh.name>  Mon, 29 Feb 2016 11:12:08 -0400
 
