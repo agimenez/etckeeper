@@ -8,5 +8,5 @@ Before=shutdown.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/lib/systemd/scripts/etckeeper
+ExecStart=/etc/etckeeper/daily
 IOSchedulingClass=idle
