@@ -1,4 +1,5 @@
 #!/bin/sh
+# Script that can be run daily to autocommit /etc changes.
 set -e
 if [ -x /usr/bin/etckeeper ] && [ -e /etc/etckeeper/etckeeper.conf ]; then
 	. /etc/etckeeper/etckeeper.conf
