@@ -23,7 +23,7 @@ build: etckeeper.spec etckeeper.version
 install: etckeeper.version
 	mkdir -p $(DESTDIR)$(etcdir)/etckeeper/ $(DESTDIR)$(vardir)/cache/etckeeper/
 	$(CP) *.d $(DESTDIR)$(etcdir)/etckeeper/
-	$(INSTALL_DATA) daily $(DESTDIR)$(etcdir)/etckeeper/
+	$(INSTALL_EXE) daily $(DESTDIR)$(etcdir)/etckeeper/daily
 	$(INSTALL_DATA) $(CONFFILE) $(DESTDIR)$(etcdir)/etckeeper/etckeeper.conf
 	mkdir -p $(DESTDIR)$(bindir)
 	$(INSTALL_EXE) etckeeper $(DESTDIR)$(bindir)/etckeeper
