@@ -31,7 +31,7 @@ install: etckeeper.version
 	$(INSTALL_DATA) etckeeper.8 $(DESTDIR)$(mandir)/man8/etckeeper.8
 	mkdir -p $(DESTDIR)$(completiondir)
 	$(INSTALL_DATA) bash_completion $(DESTDIR)$(completiondir)/etckeeper
-	mkdir -p $(DESTDIR)$(prefix)/lib/systemd/system/ $(DESTDIR)$(prefix)/lib/systemd/scripts/
+	mkdir -p $(DESTDIR)$(prefix)/lib/systemd/system/
 	$(INSTALL_DATA) systemd/etckeeper.service $(DESTDIR)$(prefix)/lib/systemd/system/etckeeper.service
 	$(INSTALL_DATA) systemd/etckeeper.timer $(DESTDIR)$(prefix)/lib/systemd/system/etckeeper.timer
 ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),apt)
