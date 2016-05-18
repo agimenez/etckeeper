@@ -5,7 +5,7 @@ Operation = Install
 Operation = Upgrade
 Operation = Remove
 Type = File
-Target = /etc/*
+Target = etc/*
 
 [Action]
 Description = etckeeper: pre-transaction commit
