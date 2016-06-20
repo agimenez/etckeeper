@@ -1,4 +1,4 @@
-etckeeper (1.18.4) UNRELEASED; urgency=medium
+etckeeper (1.18.4) unstable; urgency=medium
 
   * Optimised find for special and hard linked files.
     Thanks, Rike-Benjamin Schuppner.
@@ -11,7 +11,7 @@ etckeeper (1.18.4) UNRELEASED; urgency=medium
     cron job.
     Thanks, Christian Hesse.
 
- -- Joey Hess <id@joeyh.name>  Mon, 29 Feb 2016 11:12:08 -0400
+ -- Joey Hess <id@joeyh.name>  Mon, 20 Jun 2016 01:05:30 -0400
 
 etckeeper (1.18.3) unstable; urgency=medium
 
