@@ -1,19 +1,6 @@
 #!/bin/sh
 set -e
 
-# Filters out UNKNOWN users and groups, prints a warning on stderr.
-filter_unknown() {
-	CMD=$1
-	while read line; do
-		# if the first n chars of $line equal "$CMD UNKNOWN "...
-		if [ "$(printf %.$((9+${#CMD}))s "$line")" = "$CMD UNKNOWN " ]; then
-			echo Bad "$2" for "$line" >&2
-		else
-			echo "$line"
-		fi
-	done
-}
-
 filter_ignore() {
 	case "$VCS" in
 		darcs) ignorefile=.darcsignore ;;
