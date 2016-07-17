@@ -1,3 +1,12 @@
+etckeeper (1.18.5) UNRELEASED; urgency=medium
+
+  * Make etckeeper commit store metadata changes. The pre-commit
+    hook has always (and continues) to do that, but pre-commit is only
+    run when there are changes to tommit. This makes metadata-only
+    changes get committed.
+
+ -- Joey Hess <id@joeyh.name>  Sun, 17 Jul 2016 18:45:18 -0400
+
 etckeeper (1.18.4) unstable; urgency=medium
 
   * Optimised find for special and hard linked files.
