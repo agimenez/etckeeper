@@ -9,6 +9,7 @@ bindir=${prefix}/bin
 etcdir=/etc
 mandir=${prefix}/share/man
 vardir=/var
+systemddir=/lib/systemd/system
 completiondir=${prefix}/share/bash-completion/completions
 CP=cp -R
 INSTALL=install 
@@ -31,9 +32,9 @@ install: etckeeper.version
 	$(INSTALL_DATA) etckeeper.8 $(DESTDIR)$(mandir)/man8/etckeeper.8
 	mkdir -p $(DESTDIR)$(completiondir)
 	$(INSTALL_DATA) bash_completion $(DESTDIR)$(completiondir)/etckeeper
-	mkdir -p $(DESTDIR)$(prefix)/lib/systemd/system/
-	$(INSTALL_DATA) systemd/etckeeper.service $(DESTDIR)$(prefix)/lib/systemd/system/etckeeper.service
-	$(INSTALL_DATA) systemd/etckeeper.timer $(DESTDIR)$(prefix)/lib/systemd/system/etckeeper.timer
+	mkdir -p $(DESTDIR)$(systemddir)
+	$(INSTALL_DATA) systemd/etckeeper.service $(DESTDIR)$(systemddir)/etckeeper.service
+	$(INSTALL_DATA) systemd/etckeeper.timer $(DESTDIR)$(systemddir)/etckeeper.timer
 ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),apt)
 	mkdir -p $(DESTDIR)$(etcdir)/apt/apt.conf.d
 	$(INSTALL_DATA) apt.conf $(DESTDIR)$(etcdir)/apt/apt.conf.d/05etckeeper
